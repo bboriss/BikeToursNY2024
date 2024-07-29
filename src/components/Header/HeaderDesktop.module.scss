@@ -1,0 +1,29 @@
+@import '../../styles/_variables.scss';
+@import '../../styles/_typography.scss';
+
+.desktopHeader {
+  background-color: red;
+  padding: 1rem;
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0 1rem;
+
+      a {
+        text-decoration: none;
+        color: white;
+        @include font-primary-light-base;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "extends": ["next/core-web-vitals"],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    // Dodaj svoje prilagođene ESLint pravila ovde
+  }
+}
