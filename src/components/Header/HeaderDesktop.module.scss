@@ -1,29 +1,60 @@
-@import '../../styles/_variables.scss';
-@import '../../styles/_typography.scss';
+@import './../../styles/typography';
+@import './../../styles/theme.scss';
 
-.desktopHeader {
-  background-color: red;
-  padding: 1rem;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--header-background, #ffffff);
+  color: var(--header-text, #000000);
+}
 
-  nav ul {
-    list-style: none;
+.title {
+  @include font-primary-regular-xxs;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+
+  li {
+    margin-left: 20px;
+    @include font-primary-light-base;
     display: flex;
-    flex-direction: row;
-    margin: 0;
-    padding: 0;
+    align-items: center;
+    transition: transform 0.2s, color 0.2s;
 
-    li {
-      margin: 0 1rem;
+    &:hover {
+      color: var(--header-text-light);
+      transform: scale(1.2);
+    }
 
-      a {
-        text-decoration: none;
-        color: white;
-        @include font-primary-light-base;
+    a {
+      text-decoration: none;
+      color: var(--header-text);
+      display: flex;
+      align-items: center;
+      
+      svg {
+        @include font-primary-bold-base-lg;
+      }
 
-        &:hover {
-          text-decoration: underline;
-        }
+      &:hover {
+        color: var(--header-text-light)
       }
     }
+  }
+}
+
+.modeButton, .languageButton {
+  color: var(--header-text);
+}
+
+.languageMenu {
+    .flagIcon {
+      width: 22px;
+      height: 22px;
+      margin-right: 6px;
   }
 }

@@ -1,16 +1,26 @@
 // Light mode
 .light-theme {
-    --header-background: #D8D9DA;
-    --header-text: #61677A;
+    --header-background: #f7b731;
+    --header-background-light: #FFDD93;
+    --header-text: #272829;
+    --header-text-light: #3a4750;
     --icon-color: #272829;
+    --text-color: #EEEEEE;
     --drawer-text: #272829;
+    --footer-background: #f7b731;
+    --footer-text: #272829;
   }
   
   // Dark mode
   .dark-theme {
-    --header-background: $background-primary-light;
-    --header-text: #e0e0e0;
-    --icon-color: #e0e0e0;
+    --header-background: #272829;
+    --header-background-light: #3A4750;
+    --header-text: #f7b731;
+    --header-text-light: #FFDD93;
+    --icon-color: #f7b731;
+    --text-color: #EEEEEE;
     --drawer-text: #e0e0e0;
+    --footer-background: #272829;
+    --footer-text: #f7b731;
   }
   

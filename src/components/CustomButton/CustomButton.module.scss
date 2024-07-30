@@ -1,0 +1,16 @@
+@import './../../styles/typography';
+@import './../../styles/theme.scss';
+
+.mainButton {
+    background-color: var(--header-background);
+    color: var(--header-text);
+    padding: 10px 20px;
+    border-radius: 5px;
+    @include font-primary-bold-xs;
+  
+    &:hover {
+      background-color: var(--header-background-light);
+      color: var(--header-text-light);
+    }
+}
+  

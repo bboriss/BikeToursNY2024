@@ -1,3 +1,5 @@
+@import './_variables.scss';
+
 @mixin font-primary-regular {
     font-weight: $regular;
     font-size: $base-font-size;
@@ -76,11 +78,6 @@
 @mixin font-primary-heavy {
     font-weight: $extra-bold;
     font-size: $xxl-font-size;
-}
-
-@mixin font-primary-regular-xxs {
-    font-weight: $regular;
-    font-size: $xxs-font-size;
 }
 
 @mixin font-primary-regular-xxs {

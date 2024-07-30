@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from './Footer.module.scss';
 
 const Footer: React.FC = () => {
   return (
-    <footer>
-      <p>&copy; 2024 Bike Tours NY. All rights reserved.</p>
+    <footer className={styles.footer}>
+      <p>&copy;2024. All rights reserved.</p>
     </footer>
   );
 };

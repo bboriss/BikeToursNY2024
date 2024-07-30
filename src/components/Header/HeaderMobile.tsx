@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Drawer, IconButton, Menu, MenuItem } from '@mui/material';
-import { Menu as MenuIcon, LightMode, DarkMode, Close as CloseIcon } from '@mui/icons-material';
+import { Menu as MenuIcon, LightMode, DarkMode, Close as CloseIcon, Home as HomeIcon, Info as InfoIcon, Person as PersonIcon } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
+import PublicIcon from '@mui/icons-material/Public';
 import styles from './HeaderMobile.module.scss';
 
 interface HeaderMobileProps {
@@ -39,7 +41,7 @@ const HeaderMobile: React.FC<HeaderMobileProps> = ({ handleThemeChange }) => {
           {darkMode ? <LightMode /> : <DarkMode />}
         </IconButton>
         <IconButton className={styles.languageButton} onClick={handleLanguageMenuOpen}>
-          🌐
+          <PublicIcon/>
         </IconButton>
         <Menu
           anchorEl={anchorEl}
@@ -48,21 +50,33 @@ const HeaderMobile: React.FC<HeaderMobileProps> = ({ handleThemeChange }) => {
         >
           <MenuItem onClick={handleLanguageMenuClose}>English</MenuItem>
           <MenuItem onClick={handleLanguageMenuClose}>Deutsch</MenuItem>
+          <MenuItem onClick={handleLanguageMenuClose}>French</MenuItem>
         </Menu>
       </div>
       <Drawer
-        anchor="right"
+        anchor="left"
         open={menuOpen}
         onClose={toggleMenu}
+        classes={{ paper: styles.drawerPaper }}
       >
         <div className={styles.drawerContent}>
           <IconButton className={styles.closeButton} onClick={toggleMenu}>
             <CloseIcon />
           </IconButton>
+          <h1 className={styles.title}>Bike Tours New York</h1>
           <ul className={styles.drawerList}>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li>
+              <HomeIcon className={styles.icon} />
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <InfoIcon className={styles.icon} />
+              <Link href="/about">About</Link>
+            </li>
+            <li>
+              <PersonIcon className={styles.icon} />
+              <Link href="/auth/login">Login</Link>
+            </li>
           </ul>
         </div>
       </Drawer>

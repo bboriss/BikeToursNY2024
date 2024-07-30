@@ -1,3 +1,6 @@
+@import './../../styles/typography';
+@import './../../styles/theme.scss';
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -12,27 +15,62 @@
   color: var(--icon-color);
 }
 
+.drawerPaper {
+  width: 100%;
+  height: 100%;
+  background-color: var(--header-background);
+  color: var(--header-text);
+  transition: width 1s ease, height 1s ease;
+}
+
 .drawerContent {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
 }
 
 .closeButton {
   position: absolute;
   top: 10px;
-  right: 10px;
+  left: 10px;
+  color: var(--icon-color);
+}
+
+.title {
+  @include font-primary-bold-xl;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 .drawerList {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 
   li {
-    margin: 10px 0;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
 
     a {
       text-decoration: none;
       color: var(--drawer-text);
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
     }
   }
+}
+
+.icon {
+  margin-right: 10px;
 }

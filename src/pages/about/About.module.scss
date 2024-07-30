@@ -1,0 +1,17 @@
+@import './../../styles/typography';
+@import './../../styles/theme.scss';
+
+.aboutContainer {
+  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.title {
+  @include font-primary-bold-lg;
+  margin-bottom: 20px;
+}
+
+.description {
+  @include font-primary-light-base;
+}
