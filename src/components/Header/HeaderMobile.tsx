@@ -58,6 +58,7 @@ const HeaderMobile: React.FC<HeaderMobileProps> = ({ handleThemeChange }) => {
         open={menuOpen}
         onClose={toggleMenu}
         classes={{ paper: styles.drawerPaper }}
+        transitionDuration={500}
       >
         <div className={styles.drawerContent}>
           <IconButton className={styles.closeButton} onClick={toggleMenu}>
