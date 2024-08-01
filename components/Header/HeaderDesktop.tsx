@@ -17,6 +17,7 @@ interface HeaderDesktopProps {
 
 const HeaderDesktop: React.FC<HeaderDesktopProps> = ({ handleThemeChange }) => {
   const { t, i18n } = useTranslation('common');
+  console.log(i18n.changeLanguage)
   const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const theme = useTheme();

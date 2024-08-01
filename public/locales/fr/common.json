@@ -1,8 +1,18 @@
 {
-    "title": "Tours à vélo à New York",
-    "home": "Accueil",
-    "about": "À propos",
-    "welcome": "Bienvenue dans la plus grande base de données de tours à vélo à New York",
-    "explore": "Explorer les tours"
-  }
+  "title": "Tours à vélo à New York",
+  "home": "Accueil",
+  "about": "À propos",
+  "welcome": "Bienvenue dans la plus grande base de données de tours à vélo à New York",
+  "explore": "Explorer les tours",
+  "aboutTitle": "À propos de Bike Tours New York",
+  "aboutIntro": "Bienvenue sur Bike Tours New York ! Nous proposons une gamme de visites à vélo passionnantes et pittoresques dans la vibrante ville de New York. Que vous soyez un habitant ou un visiteur, nos visites offrent un moyen unique de découvrir les monuments et les trésors cachés de la ville.",
+  "aboutPurposeTitle": "Ce que Nous Offrons",
+  "aboutPurposeText": "Notre plateforme vous connecte avec des visites guidées à vélo qui explorent divers quartiers, parcs et lieux emblématiques de New York. Chaque visite est soigneusement conçue pour mettre en valeur l'histoire, la culture et l'architecture de la ville.",
+  "aboutWhoCanUseTitle": "Qui Peut Utiliser Notre Service",
+  "aboutWhoCanUseText": "Nos visites sont conçues pour tout le monde, des cyclistes occasionnels aux passionnés de vélo. Que vous recherchiez une balade tranquille ou un itinéraire plus difficile, nous avons des options pour répondre à vos besoins. Nos visites conviennent également aux familles, groupes et aventuriers en solo.",
+  "aboutBenefitsTitle": "Pourquoi Nous Choisir",
+  "aboutBenefitsText": "Choisir Bike Tours New York signifie que vous bénéficierez de guides expérimentés, de parcours bien conçus et d'une expérience immersive des différents quartiers de la ville. Nos visites offrent des opportunités éducatives et récréatives, les rendant parfaites pour les touristes et les habitants.",
+  "aboutContactTitle": "Contactez-Nous",
+  "aboutContactText": "Pour plus d'informations ou pour réserver une visite, veuillez nous contacter via notre formulaire de contact ou par e-mail. Nous sommes là pour vous aider à planifier votre prochaine aventure à vélo à New York !"    
+}
   

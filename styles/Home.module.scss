@@ -15,22 +15,24 @@
     text-align: center;
     color: var(--text-color);
     padding: 0 20px;
-    transform: translateY(-90px);
+    transform: translateY(-60px);
     @include font-primary-regular-xxs;
 
     h1 {
         margin-bottom: 10px;
-        // backdrop-filter: blur(5px);
         color: var(--main-content-text);
-        // color: var(--text-color);
+    }
+
+    button {
+        margin-top: 20px;
     }
 }
 
 @media (min-width: $sx) {
     .content {
-        max-width: 500px;
+        max-width: 600px;
         padding: 30px;
-        transform: translateY(-90px);
+        transform: translateY(-60px);
     }
 
     .content h1 {
@@ -38,16 +40,16 @@
     }
 }
 
+
 @media (min-width: $sm) {
     .content {
         max-width: 700px;
         padding: 40px;
-        transform: translateY(-65px);
+        transform: translateY(-30px);
     }
 
     .content h1 {
         @include font-primary-ultra-heavy;
         margin-bottom: 20px;
-        padding: 0px;
     }
 }

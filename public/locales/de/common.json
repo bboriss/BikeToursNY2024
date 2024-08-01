@@ -1,8 +1,18 @@
 {
-    "title": "Fahrradtouren New York",
-    "home": "Startseite",
-    "about": "Über uns",
-    "welcome": "Willkommen zur größten Fahrradtouren-Datenbank in New York",
-    "explore": "Touren entdecken"
-  }
+  "title": "Fahrradtouren New York",
+  "home": "Startseite",
+  "about": "Über uns",
+  "welcome": "Willkommen zur größten Fahrradtouren-Datenbank in New York",
+  "explore": "Touren entdecken",
+  "aboutTitle": "Über Bike Tours New York",
+  "aboutIntro": "Willkommen bei Bike Tours New York! Wir bieten eine Reihe von aufregenden und malerischen Radtouren durch die pulsierende Stadt New York an. Egal, ob Sie ein Einheimischer oder ein Besucher sind, unsere Touren bieten eine einzigartige Möglichkeit, die Sehenswürdigkeiten und versteckten Schätze der Stadt zu erleben.",
+  "aboutPurposeTitle": "Was Wir Anbieten",
+  "aboutPurposeText": "Unsere Plattform verbindet Sie mit geführten Radtouren, die verschiedene Stadtteile, Parks und ikonische Orte in New York City erkunden. Jede Tour ist sorgfältig zusammengestellt, um die reiche Geschichte, Kultur und Architektur der Stadt zu präsentieren.",
+  "aboutWhoCanUseTitle": "Wer Kann Unseren Service Nutzen",
+  "aboutWhoCanUseText": "Unsere Touren sind für alle konzipiert, von Freizeitfahrern bis hin zu begeisterten Radfahrern. Ob Sie eine entspannte Fahrt oder eine anspruchsvollere Strecke suchen, wir haben Optionen, die Ihren Bedürfnissen entsprechen. Unsere Touren sind auch für Familien, Gruppen und Alleinreisende geeignet.",
+  "aboutBenefitsTitle": "Warum Uns Wählen",
+  "aboutBenefitsText": "Die Wahl von Bike Tours New York bedeutet, dass Sie von sachkundigen Guides, gut geplanten Routen und einem intensiven Erlebnis der verschiedenen Stadtviertel profitieren. Unsere Touren bieten sowohl Bildungs- als auch Freizeitmöglichkeiten, was sie ideal für Touristen und Einheimische macht.",
+  "aboutContactTitle": "Kontaktieren Sie Uns",
+  "aboutContactText": "Für weitere Informationen oder zur Buchung einer Tour, kontaktieren Sie uns bitte über unser Kontaktformular oder per E-Mail. Wir sind hier, um Ihnen bei der Planung Ihres nächsten Fahrradabenteuers in New York City zu helfen!" 
+}
   
