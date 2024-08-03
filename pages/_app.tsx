@@ -1,9 +1,9 @@
 import { AppProps } from 'next/app';
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { appWithTranslation } from 'next-i18next';
 import MainLayout from '../components/Layout/MainLayout';
 import NoHeaderFooterLayout from '../components/Layout/NoHeaderFooterLayout';
-import { appWithTranslation } from 'next-i18next';
 import { lightTheme, darkTheme } from '../styles/theme';
 import '../styles/globals.scss';
 import '../styles/theme.scss';
