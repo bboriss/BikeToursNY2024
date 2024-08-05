@@ -1,31 +1,37 @@
+@import './_variables.scss';
+@import './_typography.scss';
+
 .container {
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: var(--about-background);
+  color: var(--drawer-text);
+  flex: 1
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.title {
+  @include font-primary-bold-xl;
+  margin-bottom: 10px
+}
+
+.subtitle {
+  @include font-primary-semi-md;
+  margin-bottom: 6px;
+}
+
+.text {
+  @include font-primary-regular;
+  line-height: 1.6;
+}
+
+.list {
+  list-style-type: none;
+  @include font-primary-regular;
   
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-}
-
-
-.intro {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.details {
-  h2 {
-    font-size: 1.5rem;
-    margin-top: 30px;
+  li {
     margin-bottom: 10px;
-  }
-
-  p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
   }
 }

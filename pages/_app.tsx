@@ -9,7 +9,7 @@ import '../styles/globals.scss';
 import '../styles/theme.scss';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const [mode, setMode] = useState<'light' | 'dark'>('dark');
 
   useEffect(() => {
     const savedMode = localStorage.getItem('theme') as 'light' | 'dark' || 'light';

@@ -4,6 +4,27 @@
   "about": "À propos",
   "welcome": "Bienvenue dans la plus grande base de données de tours à vélo à New York",
   "explore": "Explorer les tours",
-  "change-locale": "Kita2"   
+  "change-locale": "Kita2",
+  "copyright": "2024. Tous droits réservés.",
+  "aboutPage": {
+    "about": "À propos de nous",
+    "description": "Chez Bike Tours New York, notre mission est d'offrir aux cyclistes des expériences mémorables et enrichissantes grâce à des visites à vélo soigneusement organisées. Nous visons à mettre en avant les quartiers divers de la ville, les monuments historiques et les trésors cachés, tout en garantissant une conduite sûre et agréable.",
+    "mission": "Notre Mission",
+    "missionText": "Chez Bike Tours New York, notre mission est d'offrir aux cyclistes des expériences mémorables et enrichissantes grâce à des visites à vélo soigneusement organisées. Nous visons à mettre en avant les quartiers divers de la ville, les monuments historiques et les trésors cachés, tout en garantissant une conduite sûre et agréable.",
+    "offer": "Ce Que Nous Offrons",
+    "guidedTours": "Visites Guidées : Explorez New York avec nos guides expérimentés qui sont passionnés par le vélo et l'histoire de la ville. Nos visites guidées offrent des aperçus sur la culture locale, l'architecture et les sites importants.",
+    "selfGuidedTours": "Visites Autoguidées : Pour ceux qui préfèrent explorer à leur propre rythme, nos visites autoguidées sont accompagnées de cartes détaillées et de coordonnées GPS, vous permettant de découvrir la ville à votre manière.",
+    "customizableTours": "Visites Personnalisables : Vous avez des intérêts ou des besoins spécifiques ? Laissez-nous personnaliser une visite rien que pour vous. Que ce soit une promenade tranquille dans Central Park ou un parcours exigeant à Brooklyn, nous pouvons adapter l'expérience selon vos préférences.",
+    "whyChooseUs": "Pourquoi Nous Choisir ?",
+    "expertGuides": "Guides Experts : Notre équipe de guides expérimentés est passionnée par le vélo et connaît bien l'histoire et la culture de New York City.",
+    "scenicRoutes": "Routes Pittoresques : Nous proposons une variété d'itinéraires qui montrent les monuments les plus emblématiques de la ville ainsi que des lieux pittoresques moins connus.",
+    "safetyFirst": "Sécurité Avant Tout : Votre sécurité est notre priorité. Toutes nos visites comprennent des briefings de sécurité et nous fournissons un équipement de haute qualité pour garantir une conduite fluide et sécurisée.",
+    "localExperience": "Expérience Locale : Nos visites sont conçues pour vous offrir une expérience authentique en vous connectant avec les communautés vibrantes et les trésors cachés de la ville.",
+    "whoCanJoin": "Qui Peut Participer ?",
+    "whoCanJoinText": "Nos visites conviennent à tout le monde, des cyclistes amateurs aux cyclistes expérimentés. Les familles, les groupes et les voyageurs en solo trouveront tous quelque chose à apprécier. Que vous recherchiez une promenade détendue ou un défi aventureux, nous avons des options adaptées à vos besoins.",
+    "contactUs": "Contactez-Nous",
+    "contactUsText": "Pour plus d'informations sur nos visites ou pour réserver votre prochaine aventure, veuillez nous contacter via notre formulaire de contact ou par e-mail. Notre équipe est là pour vous aider à planifier la visite à vélo parfaite à New York City."
+  }
+  
 }
   
