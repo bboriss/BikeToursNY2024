@@ -24,6 +24,13 @@
     "whoCanJoinText": "Our tours are suitable for everyone, from casual riders to seasoned cyclists. Families, groups, and solo adventurers will all find something to enjoy. Whether you're looking for a relaxing ride or an adventurous challenge, we have options to suit your needs.",
     "contactUs": "Contact Us",
     "contactUsText": "For more information about our tours or to book your next adventure, please reach out to us through our contact form or via email. Our team is here to help you plan the perfect bike tour in New York City."
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "username": "Username",
+    "password": "Password",
+    "noAccount": "No Account?"
   }
 }
   

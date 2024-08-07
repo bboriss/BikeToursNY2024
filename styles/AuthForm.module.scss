@@ -1,0 +1,56 @@
+@import './variables';
+@import './typography';
+@import './theme.scss';
+
+.formWrapper {
+  border: 3px solid yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+  padding: 20px 10px;
+  border-radius: 5px;
+  background-color: var(--header-background);
+  @include font-primary-regular-xs;
+}
+
+.formTitle {
+  margin-bottom: 20px;
+  @include font-primary-bold-base-lg;
+  color: var(----header-text);
+}
+
+.textField {
+  margin-bottom: 15px;
+  color: var(----header-text);
+
+}
+
+.submitButton {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: var(--header-background);
+  color: var(--header-text);
+  font-size: 16px;
+  font-weight: bold;
+
+  &:hover {
+    background-color: var(--primary-color-dark);
+  }
+}
+
+.linkText {
+  margin-top: 15px;
+  text-align: center;
+  color: var(--link-color);
+}
+
+.link {
+  color: var(--link-color);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

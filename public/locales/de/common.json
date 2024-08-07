@@ -24,7 +24,13 @@
     "whoCanJoinText": "Unsere Touren sind für alle geeignet, von Freizeitradlern bis hin zu erfahrenen Radfahrern. Familien, Gruppen und Alleinreisende werden alle etwas genießen. Ob Sie eine entspannte Fahrt oder eine abenteuerliche Herausforderung suchen, wir haben Optionen, die Ihren Bedürfnissen entsprechen.",
     "contactUs": "Kontaktieren Sie Uns",
     "contactUsText": "Für weitere Informationen über unsere Touren oder zur Buchung Ihres nächsten Abenteuers kontaktieren Sie uns bitte über unser Kontaktformular oder per E-Mail. Unser Team hilft Ihnen gerne bei der Planung der perfekten Fahrradtour in New York City."
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "username": "Username",
+    "password": "Password",
+    "noAccount": "No Account?"
   }
-  
 }
   

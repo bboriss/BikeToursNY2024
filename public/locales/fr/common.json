@@ -24,7 +24,13 @@
     "whoCanJoinText": "Nos visites conviennent à tout le monde, des cyclistes amateurs aux cyclistes expérimentés. Les familles, les groupes et les voyageurs en solo trouveront tous quelque chose à apprécier. Que vous recherchiez une promenade détendue ou un défi aventureux, nous avons des options adaptées à vos besoins.",
     "contactUs": "Contactez-Nous",
     "contactUsText": "Pour plus d'informations sur nos visites ou pour réserver votre prochaine aventure, veuillez nous contacter via notre formulaire de contact ou par e-mail. Notre équipe est là pour vous aider à planifier la visite à vélo parfaite à New York City."
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "username": "Username",
+    "password": "Password",
+    "noAccount": "No Account?"
   }
-  
 }
   

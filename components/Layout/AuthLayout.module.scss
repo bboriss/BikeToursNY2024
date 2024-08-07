@@ -1,0 +1,60 @@
+@import './variables';
+@import './typography';
+
+.authContainer {
+  flex:1;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-image: url('/assets/newyork.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.background {
+  padding: 0px 0px 0px 20px;
+  padding-right: 0px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  gap: 20px;
+}
+
+.overlay {
+  display: none;
+}
+
+.overlay {
+  color: white;
+  text-align: center;
+
+  h1 {
+    @include font-primary-bold-xxl;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
+
+// .form {
+//   width: 100%;
+// }
+
+@media (min-width: $sx) {
+
+  .background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .overlay {
+    display: block;
+  }
+
+  .form {
+    max-width: 360px;
+  }
+}

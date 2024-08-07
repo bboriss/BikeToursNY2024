@@ -3,10 +3,12 @@ import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { appWithTranslation } from 'next-i18next';
+import { Provider } from 'react-redux';
 import MainLayout from '../components/Layout/MainLayout';
 import NoHeaderFooterLayout from '../components/Layout/NoHeaderFooterLayout';
 import { lightTheme, darkTheme } from '../styles/theme';
 import Loader from '../components/Loader/Loader';
+import store from '../redux/store';
 import '../styles/globals.scss';
 import '../styles/theme.scss';
 
@@ -60,10 +62,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     return (
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {loading && <Loader />}
-        <NoHeaderFooterLayout>
-          <Component {...pageProps} handleThemeChange={handleThemeChange} />
-        </NoHeaderFooterLayout>
+        <Provider store={store}>
+          {loading && <Loader />}
+          <NoHeaderFooterLayout>
+            <Component {...pageProps} handleThemeChange={handleThemeChange} />
+          </NoHeaderFooterLayout>
+        </Provider>
       </ThemeProvider>
     );
   }
@@ -71,8 +75,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {loading && <Loader />}
-      {getLayout(<Component {...pageProps} handleThemeChange={handleThemeChange} />)}
+      <Provider store={store}>
+        {loading && <Loader />}
+        {getLayout(<Component {...pageProps} handleThemeChange={handleThemeChange} />)}
+      </Provider>
     </ThemeProvider>
   );
 };
