@@ -6,6 +6,7 @@
   "explore": "Explore Tours",
   "change-locale": "Change Locale",
   "copyright": "2024. All rights reserved.",
+  "submit": "Submit",
   "aboutPage": {
     "about": "About Us",
     "description": "At Bike Tours New York, our mission is to provide cyclists with memorable and enriching experiences through expertly curated bike tours. We aim to highlight the city's diverse neighborhoods, historic landmarks, and hidden gems, all while ensuring a safe and enjoyable ride.",
@@ -30,7 +31,10 @@
     "register": "Register",
     "username": "Username",
     "password": "Password",
-    "noAccount": "No Account?"
+    "noAccount": "No Account?",
+    "title": "Start Your City Adventure Here",
+    "subtitle": "Register to unlock additional features for exploring the best bike tours for the ultimate city experience",
+    "showPassword": "Show Password"
   }
 }
   

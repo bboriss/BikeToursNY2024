@@ -6,6 +6,7 @@
   "explore": "Explorer les tours",
   "change-locale": "Kita2",
   "copyright": "2024. Tous droits réservés.",
+  "submit": "Soumettre",
   "aboutPage": {
     "about": "À propos de nous",
     "description": "Chez Bike Tours New York, notre mission est d'offrir aux cyclistes des expériences mémorables et enrichissantes grâce à des visites à vélo soigneusement organisées. Nous visons à mettre en avant les quartiers divers de la ville, les monuments historiques et les trésors cachés, tout en garantissant une conduite sûre et agréable.",
@@ -30,7 +31,10 @@
     "register": "Register",
     "username": "Username",
     "password": "Password",
-    "noAccount": "No Account?"
+    "noAccount": "No Account?",
+    "title": "Commencez votre aventure en ville ici",
+    "subtitle": "Inscrivez-vous pour débloquer des fonctionnalités supplémentaires pour explorer les meilleures visites à vélo pour la meilleure expérience en ville",
+    "showPassword": "Afficher le mot de passe"
   }
 }
   

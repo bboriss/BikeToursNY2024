@@ -1,11 +1,28 @@
 import { createTheme, ThemeOptions } from '@mui/material/styles';
+declare module '@mui/material/styles' {
+  interface Palette {
+    formColors: {
+      hover: string;
+    };
+  }
+
+  interface PaletteOptions {
+    formColors?: {
+      hover?: string;
+    };
+  }
+}
+
 
 // Definiši svetlu temu
 export const lightTheme: ThemeOptions = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#1976d2',
+      main: '#3a4750',
+    },
+    secondary: {
+      main: '#f50057',
     },
     background: {
       default: '#ffffff',
@@ -13,7 +30,10 @@ export const lightTheme: ThemeOptions = createTheme({
     },
     text: {
       primary: '#000000',
-      secondary: '#555555',
+      secondary: '#ffffff',
+    },
+    formColors: {
+      hover: '#FFDD93'
     },
   },
   typography: {
@@ -26,7 +46,10 @@ export const darkTheme: ThemeOptions = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#90caf9',
+      main: '#3a4750',
+    },
+    secondary: {
+      main: '#ff4081',
     },
     background: {
       default: '#121212',
@@ -34,7 +57,10 @@ export const darkTheme: ThemeOptions = createTheme({
     },
     text: {
       primary: '#ffffff',
-      secondary: '#aaaaaa',
+      secondary: '#f7b731',
+    },
+    formColors: {
+      hover: '#FFDD93'
     },
   },
   typography: {

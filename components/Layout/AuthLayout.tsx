@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Container } from '@mui/material';
+import { useTranslation } from 'next-i18next';
 import styles from './AuthLayout.module.scss';
 
 interface AuthLayoutProps {
@@ -7,12 +8,14 @@ interface AuthLayoutProps {
 }
 
 const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
+  const { t } = useTranslation('common');
+
   return (
     <Container className={styles.authContainer}>
       <Box className={styles.background}>
         <Box className={styles.overlay}>
-          <h1>Start Your City Adventure Here</h1>
-          <h4>Registrujte se kako biste otključali dodatne mogućnosti istraživanja najboljih biciklističkih tura grada za najbolji doživljaj.</h4>
+          <h1>{t('auth.title')}</h1>
+          <h2>{t('auth.subtitle')}</h2>
         </Box>
         <Box className={styles.form}>
             {children}
