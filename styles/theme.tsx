@@ -3,12 +3,14 @@ declare module '@mui/material/styles' {
   interface Palette {
     formColors: {
       hover: string;
+      yellow: string;
     };
   }
 
   interface PaletteOptions {
     formColors?: {
       hover?: string;
+      yellow?: string;
     };
   }
 }
@@ -33,7 +35,8 @@ export const lightTheme: ThemeOptions = createTheme({
       secondary: '#ffffff',
     },
     formColors: {
-      hover: '#FFDD93'
+      hover: '#FFDD93',
+      yellow: '#f7b731'
     },
   },
   typography: {
@@ -46,13 +49,13 @@ export const darkTheme: ThemeOptions = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#3a4750',
+      main: '#3a4750', //header-background-light
     },
     secondary: {
       main: '#ff4081',
     },
     background: {
-      default: '#121212',
+      default: '#272829', //header-background
       paper: '#333333',
     },
     text: {
@@ -60,7 +63,8 @@ export const darkTheme: ThemeOptions = createTheme({
       secondary: '#f7b731',
     },
     formColors: {
-      hover: '#FFDD93'
+      hover: '#FFDD93',
+      yellow: '#f7b731'
     },
   },
   typography: {

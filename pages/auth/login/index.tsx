@@ -135,7 +135,7 @@ const Login: React.FC = () => {
               sx={{
                 color: theme.palette.primary.main,
                 '&.Mui-checked': {
-                  color: theme.palette.primary.main,
+                  color: theme.palette.formColors.yellow,
                 },
               }}
             />

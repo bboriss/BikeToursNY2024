@@ -3,6 +3,9 @@ import bcrypt from 'bcrypt';
 import validator from 'validator';
 
 export interface IUser extends Document {
+  _id: string;  // Explicitly type _id as string
+  firstName: string;
+  lastName: string;
   username: string;
   email: string;
   role: string;
@@ -14,6 +17,14 @@ export interface IUser extends Document {
 
 const userSchema: Schema<IUser> = new Schema(
   {
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
     username: {
       type: String,
       required: [true, 'Please provide your username'],

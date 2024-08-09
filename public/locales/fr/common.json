@@ -34,7 +34,11 @@
     "noAccount": "No Account?",
     "title": "Commencez votre aventure en ville ici",
     "subtitle": "Inscrivez-vous pour débloquer des fonctionnalités supplémentaires pour explorer les meilleures visites à vélo pour la meilleure expérience en ville",
-    "showPassword": "Afficher le mot de passe"
+    "showPassword": "Afficher le mot de passe",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "E-mail",
+    "haveAccount": "Vous avez un compte?"
   }
 }
   

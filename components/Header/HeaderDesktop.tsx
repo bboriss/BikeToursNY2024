@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -10,16 +10,17 @@ import { IconButton, Menu, MenuItem } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import Flag from 'react-world-flags';
 import styles from './HeaderDesktop.module.scss';
+import { changeLanguageAndRoute } from '../../utils/languageUtils';
+import { toggleTheme } from '../../utils/themeUtils';
 
 interface HeaderDesktopProps {
   handleThemeChange: (newMode: 'light' | 'dark') => void;
 }
 
 const HeaderDesktop: React.FC<HeaderDesktopProps> = ({ handleThemeChange }) => {
-  const { t, i18n } = useTranslation('common');
-  
+  const { t } = useTranslation('common');
   const router = useRouter();
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
   const darkMode = theme.palette.mode === 'dark';
 
@@ -29,18 +30,6 @@ const HeaderDesktop: React.FC<HeaderDesktopProps> = ({ handleThemeChange }) => {
 
   const handleLanguageMenuClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleLanguageChange = (language: string) => {
-    i18n.changeLanguage(language).then(() => {
-      router.push(router.pathname, router.asPath, { locale: language });
-    });
-    handleLanguageMenuClose();
-  };
-
-  const handleThemeToggle = () => {
-    const newMode = darkMode ? 'light' : 'dark';
-    handleThemeChange(newMode);
   };
 
   return (
@@ -53,7 +42,7 @@ const HeaderDesktop: React.FC<HeaderDesktopProps> = ({ handleThemeChange }) => {
           <li><Link href="/">{t('home')}</Link></li>
           <li><Link href="/about">{t('about')}</Link></li>
           <li>
-            <IconButton className={styles.modeButton} onClick={handleThemeToggle}>
+            <IconButton className={styles.modeButton} onClick={() => toggleTheme(darkMode, handleThemeChange)}>
               {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
             </IconButton>
           </li>
@@ -67,15 +56,24 @@ const HeaderDesktop: React.FC<HeaderDesktopProps> = ({ handleThemeChange }) => {
               onClose={handleLanguageMenuClose}
               className={styles.languageMenu}
             >
-              <MenuItem onClick={() => handleLanguageChange('en')}>
+              <MenuItem onClick={() => {
+                changeLanguageAndRoute(router, 'en');
+                handleLanguageMenuClose()
+                }}>
                 <Flag code="GB" className={styles.flagIcon} />
                 English
               </MenuItem>
-              <MenuItem onClick={() => handleLanguageChange('de')}>
+              <MenuItem onClick={() =>{
+                changeLanguageAndRoute(router, 'de');
+                handleLanguageMenuClose()
+                }}>
                 <Flag code="DE" className={styles.flagIcon} />
                 Deutsch
               </MenuItem>
-              <MenuItem onClick={() => handleLanguageChange('fr')}>
+              <MenuItem onClick={() => {
+                changeLanguageAndRoute(router, 'fr');
+                handleLanguageMenuClose()
+                }}>
                 <Flag code="FR" className={styles.flagIcon} />
                 French
               </MenuItem>

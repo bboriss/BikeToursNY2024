@@ -4,6 +4,10 @@ import { Drawer, IconButton, Menu, MenuItem } from '@mui/material';
 import { Menu as MenuIcon, LightMode, DarkMode, Close as CloseIcon, Home as HomeIcon, Info as InfoIcon, Person as PersonIcon } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import PublicIcon from '@mui/icons-material/Public';
+import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
+import { changeLanguageAndRoute } from '../../utils/languageUtils';
+import { toggleTheme } from '../../utils/themeUtils';
 import styles from './HeaderMobile.module.scss';
 
 interface HeaderMobileProps {
@@ -11,10 +15,12 @@ interface HeaderMobileProps {
 }
 
 const HeaderMobile: React.FC<HeaderMobileProps> = ({ handleThemeChange }) => {
+  const { t } = useTranslation('common');
   const [menuOpen, setMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
   const darkMode = theme.palette.mode === 'dark';
+  const router = useRouter();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -27,8 +33,7 @@ const HeaderMobile: React.FC<HeaderMobileProps> = ({ handleThemeChange }) => {
   };
 
   const handleThemeToggle = () => {
-    const newMode = darkMode ? 'light' : 'dark';
-    handleThemeChange(newMode);
+    toggleTheme(darkMode, handleThemeChange);
   };
 
   return (
@@ -48,9 +53,9 @@ const HeaderMobile: React.FC<HeaderMobileProps> = ({ handleThemeChange }) => {
           open={Boolean(anchorEl)}
           onClose={handleLanguageMenuClose}
         >
-          <MenuItem onClick={handleLanguageMenuClose}>English</MenuItem>
-          <MenuItem onClick={handleLanguageMenuClose}>Deutsch</MenuItem>
-          <MenuItem onClick={handleLanguageMenuClose}>French</MenuItem>
+          <MenuItem onClick={() => { changeLanguageAndRoute(router, 'en'); handleLanguageMenuClose(); }}>English</MenuItem>
+          <MenuItem onClick={() => { changeLanguageAndRoute(router, 'de'); handleLanguageMenuClose(); }}>Deutsch</MenuItem>
+          <MenuItem onClick={() => { changeLanguageAndRoute(router, 'fr'); handleLanguageMenuClose(); }}>Français</MenuItem>
         </Menu>
       </div>
       <Drawer
@@ -64,19 +69,19 @@ const HeaderMobile: React.FC<HeaderMobileProps> = ({ handleThemeChange }) => {
           <IconButton className={styles.closeButton} onClick={toggleMenu}>
             <CloseIcon />
           </IconButton>
-          <h1 className={styles.title}>Bike Tours New York</h1>
+          <h1 className={styles.title}>{t('title')}</h1>
           <ul className={styles.drawerList}>
             <li>
               <HomeIcon className={styles.icon} />
-              <Link href="/">Home</Link>
+              <Link href="/" onClick={toggleMenu}>{t('home')}</Link>
             </li>
             <li>
               <InfoIcon className={styles.icon} />
-              <Link href="/about">About</Link>
+              <Link href="/about" onClick={toggleMenu}>{t('about')}</Link>
             </li>
             <li>
               <PersonIcon className={styles.icon} />
-              <Link href="/auth/login">Login</Link>
+              <Link href="/auth/login" onClick={toggleMenu}>{t('auth.login')}</Link>
             </li>
           </ul>
         </div>

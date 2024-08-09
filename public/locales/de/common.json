@@ -34,7 +34,11 @@
     "noAccount": "No Account?",
     "title": "Beginnen Sie Ihr Stadtabenteuer hier",
     "subtitle": "Registrieren Sie sich, um zusätzliche Funktionen zum Erkunden der besten Fahrradtouren für das ultimative Stadterlebnis freizuschalten",
-    "showPassword": "Passwort anzeigen"
+    "showPassword": "Passwort anzeigen",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail",
+    "haveAccount": "Haben Sie ein Konto?"
   }
 }
   

@@ -34,7 +34,11 @@
     "noAccount": "No Account?",
     "title": "Start Your City Adventure Here",
     "subtitle": "Register to unlock additional features for exploring the best bike tours for the ultimate city experience",
-    "showPassword": "Show Password"
+    "showPassword": "Show Password",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "haveAccount": "Have an account?"
   }
 }
   
