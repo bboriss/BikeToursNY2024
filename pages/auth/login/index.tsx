@@ -71,6 +71,7 @@ const Login: React.FC = () => {
                 color: '#EEEEEE',
               },
               fontSize: '12px',
+              backgroundColor: 'none'
             },
           }}
         />
@@ -123,6 +124,7 @@ const Login: React.FC = () => {
                 color: '#EEEEEE',
               },
               fontSize: '12px',
+              backgroundColor: 'none'
             },
           }}
         />

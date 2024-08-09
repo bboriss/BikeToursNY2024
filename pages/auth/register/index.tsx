@@ -1,3 +1,4 @@
+import ClearIcon from '@mui/icons-material/Clear';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
@@ -5,11 +6,11 @@ import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TextField, Button, Box, Typography, IconButton, InputAdornment, FormControlLabel, Checkbox } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import ClearIcon from '@mui/icons-material/Clear';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { RootState } from '../../../redux/store';
 import { registerUser } from '../../../redux/thunks/authThunks';
 import AuthLayout from '../../../components/Layout/AuthLayout';
+import { useRouter } from 'next/router'; // Importujte useRouter
 import styles from './../../../styles/AuthForm.module.scss';
 
 const Register: React.FC = () => {
@@ -17,6 +18,7 @@ const Register: React.FC = () => {
   const theme = useTheme();
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector((state: RootState) => state.auth.loading);
+  const router = useRouter(); // Inicijalizujte useRouter
   
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -24,6 +26,7 @@ const Register: React.FC = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const handleClearUsername = () => setUsername('');
   const handleClearPassword = () => setPassword('');
@@ -31,17 +34,63 @@ const Register: React.FC = () => {
   const handleClearLastName = () => setLastName('');
   const handleClearEmail = () => setEmail('');
 
+  const validateForm = () => {
+    const tempErrors: { [key: string]: string } = {};
+
+    if (!firstName) tempErrors.firstName = t('auth.firstNameRequired');
+    if (!lastName) tempErrors.lastName = t('auth.lastNameRequired');
+    if (!email) tempErrors.email = t('auth.emailRequired');
+    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) tempErrors.email = t('auth.invalidEmail');
+    if (!username) tempErrors.username = t('auth.usernameRequired');
+    if (!password) tempErrors.password = t('auth.passwordRequired');
+    else if (password.length < 8) tempErrors.password = t('auth.passwordTooShort');
+
+    setErrors(tempErrors);
+
+    return Object.keys(tempErrors).length === 0;
+  };
+
   const handleRegister = () => {
-    dispatch(
+    if (validateForm()) {
+      dispatch(
         registerUser({
-            firstName,
-            lastName,
-            email,
-            username,
-            password,
+          firstName,
+          lastName,
+          email,
+          username,
+          password,
         })
-    );
-};
+      ).then(() => {
+        router.push('/tours');
+      });
+    }
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    if (errors[field]) {
+      setErrors((prevErrors) => ({ ...prevErrors, [field]: '' }));
+    }
+
+    switch (field) {
+      case 'firstName':
+        setFirstName(value);
+        break;
+      case 'lastName':
+        setLastName(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'username':
+        setUsername(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <AuthLayout>
@@ -55,7 +104,9 @@ const Register: React.FC = () => {
           margin="normal"
           className={styles.textField}
           value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          onChange={(e) => handleInputChange('firstName', e.target.value)}
+          error={!!errors.firstName}
+          helperText={errors.firstName}
           InputLabelProps={{
             sx: {
               '&.Mui-focused': {
@@ -94,6 +145,7 @@ const Register: React.FC = () => {
               },
               input: {
                 color: '#EEEEEE',
+                backgroundColor: 'none',
               },
               fontSize: '12px',
             },
@@ -107,7 +159,9 @@ const Register: React.FC = () => {
           margin="normal"
           className={styles.textField}
           value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          onChange={(e) => handleInputChange('lastName', e.target.value)}
+          error={!!errors.lastName}
+          helperText={errors.lastName}
           InputLabelProps={{
             sx: {
               '&.Mui-focused': {
@@ -146,6 +200,7 @@ const Register: React.FC = () => {
               },
               input: {
                 color: '#EEEEEE',
+                backgroundColor: 'none',
               },
               fontSize: '12px',
             },
@@ -159,7 +214,9 @@ const Register: React.FC = () => {
           margin="normal"
           className={styles.textField}
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => handleInputChange('email', e.target.value)}
+          error={!!errors.email}
+          helperText={errors.email}
           InputLabelProps={{
             sx: {
               '&.Mui-focused': {
@@ -198,6 +255,7 @@ const Register: React.FC = () => {
               },
               input: {
                 color: '#EEEEEE',
+                backgroundColor: 'none',
               },
               fontSize: '12px',
             },
@@ -211,7 +269,9 @@ const Register: React.FC = () => {
           margin="normal"
           className={styles.textField}
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => handleInputChange('username', e.target.value)}
+          error={!!errors.username}
+          helperText={errors.username}
           InputLabelProps={{
             sx: {
               '&.Mui-focused': {
@@ -250,6 +310,7 @@ const Register: React.FC = () => {
               },
               input: {
                 color: '#EEEEEE',
+                backgroundColor: 'none',
               },
               fontSize: '12px',
             },
@@ -264,7 +325,9 @@ const Register: React.FC = () => {
           margin="normal"
           className={styles.textField}
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => handleInputChange('password', e.target.value)}
+          error={!!errors.password}
+          helperText={errors.password}
           InputLabelProps={{
             sx: {
               '&.Mui-focused': {
@@ -303,6 +366,7 @@ const Register: React.FC = () => {
               },
               input: {
                 color: '#EEEEEE',
+                backgroundColor: 'none',
               },
               fontSize: '12px',
             },
@@ -336,7 +400,7 @@ const Register: React.FC = () => {
           onClick={handleRegister}
           disabled={isLoading}
         >
-          {isLoading ? t('auth.loading') : t('auth.register')}
+          {isLoading ? t('auth.wait') : t('auth.register')}
         </Button>
         
         <Typography className={styles.linkText}>
