@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CustomButton from '../components/CustomButton/CustomButton';
+import 'leaflet/dist/leaflet.css';
 import styles from '../styles/Home.module.scss';
 
 const Home: React.FC = () => {

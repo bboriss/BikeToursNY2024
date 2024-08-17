@@ -1,0 +1,22 @@
+@import './typography';
+@import './variables';
+
+.filtersContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.sortSelect {
+    min-width: 200px;
+}
+
+@media (min-width: $sx) {
+    .filtersContainer {
+        display: flex;
+        flex-direction: row;
+        max-width: 550px;
+    }
+}

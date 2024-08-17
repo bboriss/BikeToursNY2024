@@ -6,12 +6,7 @@ const apiEndpoints = {
     login: `${API_BASE_URL}/api/auth/login`,
     register: `${API_BASE_URL}/api/auth/register`,
   },
-  // You can add more endpoints as needed
-  // example:
-  // user: {
-  //   profile: `${API_BASE_URL}/api/user/profile`,
-  //   updateProfile: `${API_BASE_URL}/api/user/update-profile`,
-  // },
+  tours: `${API_BASE_URL}/api/tours`
 };
 
 export default apiEndpoints;

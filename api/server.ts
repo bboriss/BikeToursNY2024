@@ -1,5 +1,6 @@
 import express from 'express';
 import authRoutes from './routes/authRoutes';
+import tourRoutes from './routes/tourRoutes';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -17,6 +18,7 @@ app.use(cors({ origin: 'http://localhost:3000' }));
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/tours', tourRoutes);
 
 // Database connection
 mongoose.connect(process.env.MONGO_URI!, {

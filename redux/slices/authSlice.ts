@@ -1,5 +1,3 @@
-// src/redux/slices/authSlice.ts
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loginUser, registerUser } from '../thunks/authThunks';
 
@@ -36,6 +34,8 @@ const authSlice = createSlice({
         username: null,
         role: null,
       };
+      localStorage.removeItem('jwtToken');
+      localStorage.removeItem('refreshToken');
     },
   },
   extraReducers: (builder) => {

@@ -9,6 +9,7 @@ import NoHeaderFooterLayout from '../components/Layout/NoHeaderFooterLayout';
 import { lightTheme, darkTheme } from '../styles/theme';
 import Loader from '../components/Loader/Loader';
 import store from '../redux/store';
+import 'leaflet/dist/leaflet.css';
 import '../styles/globals.scss';
 import '../styles/theme.scss';
 
