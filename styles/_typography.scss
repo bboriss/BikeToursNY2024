@@ -20,6 +20,11 @@
     font-size: $sm-font-size;
 }
 
+@mixin font-primary-light-base-lg {
+    font-weight: $normal;
+    font-size: $xl-font-size;
+}
+
 @mixin font-primary-semi-sm {
     font-weight: $semi-bold;
     font-size: $sm-font-size;
@@ -43,6 +48,11 @@
 @mixin font-primary-semi-xl {
     font-weight: $semi-bold;
     font-size: $xl-font-size;
+}
+
+@mixin font-primary-semi-xxl {
+    font-weight: $semi-bold;
+    font-size: $xxl-font-size;
 }
 
 @mixin font-primary-bold-xs {

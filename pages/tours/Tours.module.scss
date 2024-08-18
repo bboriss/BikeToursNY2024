@@ -8,13 +8,14 @@
     flex-direction: column;
     align-items: center;
     backdrop-filter: blur(1px);
-    // border: 3px solid red;
   }
   
-  .pageTitle {
-    margin-bottom: 16px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-  }
-  
+.pageTitle {
+  @include font-primary-semi-xxl;
+  color: var(--dark-gray);
+  text-align: center;
+}
+
+.pagination {
+  margin-top: 30px;
+}

@@ -1,10 +1,12 @@
 import { createTheme, ThemeOptions } from '@mui/material/styles';
+
 declare module '@mui/material/styles' {
   interface Palette {
     formColors: {
       hover: string;
       yellow: string;
     };
+    backgroundHeader: string;
   }
 
   interface PaletteOptions {
@@ -12,11 +14,10 @@ declare module '@mui/material/styles' {
       hover?: string;
       yellow?: string;
     };
+    backgroundHeader?: string;
   }
 }
 
-
-// Definiši svetlu temu
 export const lightTheme: ThemeOptions = createTheme({
   palette: {
     mode: 'light',
@@ -36,26 +37,26 @@ export const lightTheme: ThemeOptions = createTheme({
     },
     formColors: {
       hover: '#FFDD93',
-      yellow: '#f7b731'
+      yellow: '#f7b731',
     },
+    backgroundHeader: '#f7b731',
   },
   typography: {
     fontFamily: 'Poppins, Arial, sans-serif',
   },
 });
 
-// Definiši tamnu temu
 export const darkTheme: ThemeOptions = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#3a4750', //header-background-light
+      main: '#3a4750',
     },
     secondary: {
       main: '#ff4081',
     },
     background: {
-      default: '#272829', //header-background
+      default: '#272829',
       paper: '#333333',
     },
     text: {
@@ -64,8 +65,9 @@ export const darkTheme: ThemeOptions = createTheme({
     },
     formColors: {
       hover: '#FFDD93',
-      yellow: '#f7b731'
+      yellow: '#f7b731',
     },
+    backgroundHeader: '#272829',
   },
   typography: {
     fontFamily: 'Poppins, Arial, sans-serif',

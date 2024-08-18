@@ -67,12 +67,22 @@ const TourFilters: React.FC<TourFiltersProps> = ({ searchValue, setSearchValue, 
               color: '#EEEEEE',
             },
             fontSize: '12px',
-            backgroundColor: 'none',
+            backgroundColor: '#272829',
           },
         }}
       />
       <FormControl fullWidth margin="normal" variant="outlined" className={styles.sortSelect}>
-        <InputLabel id="sort-label">{t('tours.sortByDuration')}</InputLabel>
+        <InputLabel 
+          id="sort-label"
+          sx={{
+            fontSize: '12px', // Match the label font size to the TextField label font size
+            '&.Mui-focused': {
+              color: theme.palette.text.secondary,
+            },
+          }}
+        >
+          {t('tours.sortByDuration')}
+        </InputLabel>
         <Select
           labelId="sort-label"
           value={sortValue}
@@ -92,9 +102,12 @@ const TourFilters: React.FC<TourFiltersProps> = ({ searchValue, setSearchValue, 
               color: '#EEEEEE',
             },
             fontSize: '12px',
-            backgroundColor: 'none',
+            backgroundColor: '#272829',
           }}
         >
+          {sortValue !== "" && <MenuItem value="">
+            {t('tours.disable')}
+          </MenuItem> }
           <MenuItem value="shortest">{t('tours.shortestFirst')}</MenuItem>
           <MenuItem value="longest">{t('tours.longestFirst')}</MenuItem>
         </Select>

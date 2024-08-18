@@ -1,9 +1,7 @@
 @import './typography';
 @import './variables';
 
-
 .toursContainer {
-    flex: 1;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -12,12 +10,31 @@
     overflow-y: auto;
 }
 
+.noResultsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+.noResultsText {
+  color: black;
+  @include font-primary-semi-xl;
+  text-align: center;
+}
+
 @media (min-width: $md) {
   .toursContainer {
     flex-direction: row;
     justify-content: space-evenly;
     height: max-content;
-    border: 1px solid blue;
     gap: 26px;
+  }
+
+  .noResultsText {
+    color: black;
+    @include font-primary-semi-xl;
+    padding: 20px;
   }
 }
