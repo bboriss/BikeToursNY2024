@@ -7,6 +7,7 @@ declare module '@mui/material/styles' {
       yellow: string;
     };
     backgroundHeader: string;
+    paginationColor: string;
   }
 
   interface PaletteOptions {
@@ -15,6 +16,7 @@ declare module '@mui/material/styles' {
       yellow?: string;
     };
     backgroundHeader?: string;
+    paginationColor?: string;
   }
 }
 
@@ -40,6 +42,7 @@ export const lightTheme: ThemeOptions = createTheme({
       yellow: '#f7b731',
     },
     backgroundHeader: '#f7b731',
+    paginationColor: '#ffffff',
   },
   typography: {
     fontFamily: 'Poppins, Arial, sans-serif',
@@ -68,6 +71,7 @@ export const darkTheme: ThemeOptions = createTheme({
       yellow: '#f7b731',
     },
     backgroundHeader: '#272829',
+    paginationColor: '#f7b731',
   },
   typography: {
     fontFamily: 'Poppins, Arial, sans-serif',

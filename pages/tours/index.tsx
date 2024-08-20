@@ -106,7 +106,7 @@ const Tours: React.FC = () => {
           className={styles.pagination}
           sx={{
             '& .MuiPaginationItem-root': {
-              color: '#FFFFFF',
+              color: theme.palette.paginationColor,
               fontSize: '10px',
               borderColor: '#272829',
               backgroundColor: '#272829',

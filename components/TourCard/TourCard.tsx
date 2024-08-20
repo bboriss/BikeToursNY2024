@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import Loader from '../Loader/Loader';
 import { Box, Button } from '@mui/material';
 import { useTranslation } from 'next-i18next';
 import styles from './TourCard.module.scss';
 
+// Dynamic imports for Leaflet components to ensure they only run on the client
 const MapContainer = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), { ssr: false });
 const TileLayer = dynamic(() => import('react-leaflet').then((mod) => mod.TileLayer), { ssr: false });
+const RoutingMachine = dynamic(() => import('./../RoutingMachine/RoutingMachine'), { ssr: false });
 
 interface TourCardProps {
   startLocation: { type: string; coordinates: [number, number] };
@@ -24,7 +25,7 @@ const TourCard: React.FC<TourCardProps> = ({ startLocation, endLocation, startSt
   }, []);
 
   if (!isClient) {
-    return <Loader />;
+    return null;  // or some kind of loading spinner
   }
 
   return (
@@ -36,8 +37,7 @@ const TourCard: React.FC<TourCardProps> = ({ startLocation, endLocation, startSt
         style={{ height: '100%', width: '100%', marginBottom: '6px' }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {/* <Marker position={[startLocation.coordinates[1], startLocation.coordinates[0]] as [number, number]} />
-        <Marker position={[endLocation.coordinates[1], endLocation.coordinates[0]] as [number, number]} /> */}
+        <RoutingMachine startLocation={startLocation} endLocation={endLocation} />
       </MapContainer>
       <p className={styles.description}><b>{t('tours.from')}</b>: {startStationName}</p>
       <p className={styles.description}><b>{t('tours.to')}</b>: {endStationName}</p>
