@@ -3,6 +3,7 @@ import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { appWithTranslation } from 'next-i18next';
+import Head from 'next/head';
 import { Provider } from 'react-redux';
 import MainLayout from '../components/Layout/MainLayout';
 import NoHeaderFooterLayout from '../components/Layout/NoHeaderFooterLayout';
@@ -64,6 +65,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Provider store={store}>
+          <Head>
+            <title>BikeToursNewYork</title>
+            <meta name="description" content="Discover the best bike tours in New York!" />
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
           {loading && <Loader />}
           <NoHeaderFooterLayout>
             <Component {...pageProps} handleThemeChange={handleThemeChange} />
@@ -77,6 +83,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Provider store={store}>
+        <Head>
+          <title>BikeToursNewYork</title>
+          <meta name="description" content="Discover the best bike tours in New York!" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         {loading && <Loader />}
         {getLayout(<Component {...pageProps} handleThemeChange={handleThemeChange} />)}
       </Provider>

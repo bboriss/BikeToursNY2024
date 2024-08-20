@@ -143,6 +143,10 @@ const Login: React.FC = () => {
             />
           }
           label={t('auth.showPassword')}
+          sx={{
+            color: '#ffffff',
+            fontSize: '14px'
+          }}
         />
         <Button variant="contained" fullWidth className={styles.submitButton}>
           {t('submit')}
