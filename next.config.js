@@ -1,6 +1,5 @@
 const { i18n } = require('./next-i18next.config.js');
 const path = require('path');
-// You can remove the following 2 lines when integrating our example.
 const { loadCustomBuildParams } = require('./next-utils.config')
 const { esmExternals = false, tsconfigPath } =
   loadCustomBuildParams()
@@ -8,7 +7,7 @@ const { esmExternals = false, tsconfigPath } =
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    esmExternals, // https://nextjs.org/blog/next-11-1#es-modules-support
+    esmExternals,
   },
   i18n,
   reactStrictMode: true,

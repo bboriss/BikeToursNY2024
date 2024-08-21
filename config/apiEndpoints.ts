@@ -1,4 +1,3 @@
-
 const API_BASE_URL = process.env.BASE_URL || 'http://localhost:5000';
 
 const apiEndpoints = {
@@ -6,7 +5,8 @@ const apiEndpoints = {
     login: `${API_BASE_URL}/api/auth/login`,
     register: `${API_BASE_URL}/api/auth/register`,
   },
-  tours: `${API_BASE_URL}/api/tours`
+  tours: `${API_BASE_URL}/api/tours`,
+  getTourById: (id: string) => `${API_BASE_URL}/api/tours/${id}`,
 };
 
 export default apiEndpoints;

@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import validator from 'validator';
 
 export interface IUser extends Document {
-  _id: string;  // Explicitly type _id as string
+  _id: string;
   firstName: string;
   lastName: string;
   username: string;

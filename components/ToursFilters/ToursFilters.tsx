@@ -75,7 +75,7 @@ const TourFilters: React.FC<TourFiltersProps> = ({ searchValue, setSearchValue, 
         <InputLabel 
           id="sort-label"
           sx={{
-            fontSize: '12px', // Match the label font size to the TextField label font size
+            fontSize: '12px',
             '&.Mui-focused': {
               color: theme.palette.text.secondary,
             },

@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 
 interface LoaderProps {
-  variant?: 'fullScreen' | 'container'; // Add a variant prop
+  variant?: 'fullScreen' | 'container';
 }
 
 const LoaderWrapper = styled(Box)<{ variant: string }>(({ theme, variant }) => ({

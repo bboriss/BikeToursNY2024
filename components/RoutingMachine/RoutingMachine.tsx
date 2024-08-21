@@ -64,8 +64,8 @@ const RoutingMachine: React.FC<RoutingMachineProps> = ({ startLocation, endLocat
     return () => {
       if (map && routingControl) {
         try {
-          routingControl.getPlan().setWaypoints([]); // Clear waypoints safely
-          map.removeControl(routingControl); // Safely remove the control
+          routingControl.getPlan().setWaypoints([]);
+          map.removeControl(routingControl);
         } catch (error) {
           console.error('Error during map cleanup:', error);
         }

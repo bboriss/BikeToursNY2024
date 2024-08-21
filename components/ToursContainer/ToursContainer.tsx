@@ -41,6 +41,7 @@ const ToursContainer: React.FC<ToursContainerProps> = ({ tours, loading, searchV
       {tours.map((tour) => (
         <TourCard
           key={tour._id}
+          id={tour._id}
           startLocation={tour['start station location']}
           endLocation={tour['end station location']}
           startStationName={tour['start station name']}

@@ -19,3 +19,57 @@
 .pagination {
   margin-top: 30px;
 }
+
+.tourDetailsContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: var(--details-text);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(1px);
+  @include font-primary-regular-xs;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px;
+  gap: 20px;
+}
+
+.leftContainer {
+  border-radius: 8px;
+  overflow: hidden;
+  height: 400px;
+  border: 1px solid yellow;
+}
+
+.rightContainer {
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+
+  .tourTitle {
+    @include font-primary-light-base-lg;
+    margin-bottom: 12px;
+  }
+
+  .tourInfo {
+    @include font-primary-regular;
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: $md) {
+  .tourDetailsContainer{
+    flex: none;
+    width: 60vw;
+    flex-direction: row;
+  }
+
+  .leftContainer {
+    flex: 1;
+    @include font-primary-light-base;
+  }
+
+  .rightContainer {
+    align-items: flex-start;
+  }
+}

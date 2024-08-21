@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { RootState } from '../../../redux/store';
 import { registerUser } from '../../../redux/thunks/authThunks';
 import AuthLayout from '../../../components/Layout/AuthLayout';
-import { useRouter } from 'next/router'; // Importujte useRouter
+import { useRouter } from 'next/router';
 import styles from './../../../styles/AuthForm.module.scss';
 
 const Register: React.FC = () => {
@@ -18,7 +18,7 @@ const Register: React.FC = () => {
   const theme = useTheme();
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector((state: RootState) => state.auth.loading);
-  const router = useRouter(); // Inicijalizujte useRouter
+  const router = useRouter();
   
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

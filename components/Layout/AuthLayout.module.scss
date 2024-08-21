@@ -51,12 +51,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--text-color);
     text-align: center;
     max-width: 450px;
     width: 50%;
     padding: 0 20px;
-    // border: 2px solid blue;
 
     h1 {
       @include font-primary-bold-xxl;

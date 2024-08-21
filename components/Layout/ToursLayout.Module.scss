@@ -4,7 +4,8 @@
 .toursContainer {
   flex: 1;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   background-image: url('/assets/newyork2.jpg');
   background-size: cover;

@@ -10,17 +10,14 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Middleware
 app.use(express.json());
 
-// Enable CORS
 app.use(cors({ origin: 'http://localhost:3000' }));
 
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/tours', tourRoutes);
 
-// Database connection
 mongoose.connect(process.env.MONGO_URI!, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

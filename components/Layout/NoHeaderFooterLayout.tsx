@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './NoHeaderFooterLayout.module.scss'; // Importuj stilove
+import styles from './NoHeaderFooterLayout.module.scss';
 
 interface NoHeaderFooterLayoutProps {
   children: React.ReactNode;
