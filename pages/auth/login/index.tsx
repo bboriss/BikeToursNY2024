@@ -8,16 +8,35 @@ import { useTheme } from '@mui/material/styles';
 import ClearIcon from '@mui/icons-material/Clear';
 import AuthLayout from '../../../components/Layout/AuthLayout';
 import styles from './../../../styles/AuthForm.module.scss';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { RootState } from '../../../redux/store';
+import { loginUser } from '../../../redux/thunks/authThunks';
+import { useRouter } from 'next/router';
 
 const Login: React.FC = () => {
   const { t } = useTranslation('common');
   const theme = useTheme();
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector((state: RootState) => state.auth.loading);
+  const router = useRouter();
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClearUsername = () => setUsername('');
   const handleClearPassword = () => setPassword('');
+
+  const handleLogin = () => {
+    dispatch(
+      loginUser({
+        username,
+        password,
+      })
+    ).then(() => {
+      router.push('/tours');
+    });
+  };
 
   return (
     <AuthLayout>
@@ -148,8 +167,14 @@ const Login: React.FC = () => {
             fontSize: '14px'
           }}
         />
-        <Button variant="contained" fullWidth className={styles.submitButton}>
-          {t('submit')}
+        <Button
+          variant="contained"
+          fullWidth
+          className={styles.submitButton}
+          onClick={handleLogin}
+          disabled={isLoading}
+        >
+          {isLoading ? t('auth.wait') : t('auth.login')}
         </Button>
         <Typography className={styles.linkText}>
           {t('auth.noAccount')}{' '}

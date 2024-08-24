@@ -23,16 +23,23 @@ export const register = async (req: Request, res: Response) => {
 
     const token = createToken(userId, '1h');
     const refreshToken = createRefreshToken(userId);
-    res.status(201).json({ token, refreshToken });
+
+    const userData = {
+      id: newUser._id,
+      username: newUser.username,
+      role: newUser.role,
+    };
+
+    res.status(201).json({ token, refreshToken, user: userData });
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
   }
 };
 
 export const login = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
   try {
-    const user = await User.findOne({ email }).select('+password');
+    const user = await User.findOne({ username }).select('+password');
     if (!user || !(await user.correctPassword(password, user.password))) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
@@ -41,26 +48,15 @@ export const login = async (req: Request, res: Response) => {
 
     const token = createToken(userId, '1h');
     const refreshToken = createRefreshToken(userId);
-    res.status(200).json({ token, refreshToken });
+
+    const userData = {
+      id: user._id,
+      username: user.username,
+      role: user.role,
+    };
+
+    res.status(200).json({ token, refreshToken, user: userData });
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
-  }
-};
-
-export const refreshToken = async (req: Request, res: Response) => {
-  const { refreshToken } = req.body;
-  if (!refreshToken) {
-    return res.status(403).json({ message: 'Refresh token not provided' });
-  }
-  try {
-    const decoded: any = jwt.verify(refreshToken, refreshSecret);
-    
-    const userId = decoded.id;
-
-    const token = createToken(userId, '1h');
-    const newRefreshToken = createRefreshToken(userId);
-    res.status(200).json({ token, refreshToken: newRefreshToken });
-  } catch (error) {
-    res.status(403).json({ message: 'Invalid refresh token' });
   }
 };

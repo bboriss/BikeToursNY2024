@@ -41,7 +41,8 @@
       }
 
       &:hover {
-        color: var(--header-text-light)
+        color: var(--header-text-light);
+        cursor: pointer;
       }
     }
   }

@@ -47,7 +47,9 @@
     "invalidEmail": "Invalid email",
     "usernameRequired": "Please enter your username",
     "passwordRequired": "Please enter your password",
-    "passwordTooShort":"Password must contain minimum 8 characters"
+    "passwordTooShort":"Password must contain minimum 8 characters",
+    "sending": "Sending",
+    "logout": "Logout"
   },
   "tours": {
     "searchByStreet": "Search by starting street",

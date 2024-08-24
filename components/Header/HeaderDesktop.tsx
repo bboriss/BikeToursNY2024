@@ -12,6 +12,8 @@ import Flag from 'react-world-flags';
 import styles from './HeaderDesktop.module.scss';
 import { changeLanguageAndRoute } from '../../utils/languageUtils';
 import { toggleTheme } from '../../utils/themeUtils';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+import { logout } from '../../redux/slices/authSlice';
 
 interface HeaderDesktopProps {
   handleThemeChange: (newMode: 'light' | 'dark') => void;
@@ -23,6 +25,9 @@ const HeaderDesktop: React.FC<HeaderDesktopProps> = ({ handleThemeChange }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
   const darkMode = theme.palette.mode === 'dark';
+  
+  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useAppDispatch();
 
   const handleLanguageMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -30,6 +35,11 @@ const HeaderDesktop: React.FC<HeaderDesktopProps> = ({ handleThemeChange }) => {
 
   const handleLanguageMenuClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    router.push('/');
   };
 
   return (
@@ -58,28 +68,38 @@ const HeaderDesktop: React.FC<HeaderDesktopProps> = ({ handleThemeChange }) => {
             >
               <MenuItem onClick={() => {
                 changeLanguageAndRoute(router, 'en');
-                handleLanguageMenuClose()
-                }}>
+                handleLanguageMenuClose();
+              }}>
                 <Flag code="GB" className={styles.flagIcon} />
                 English
               </MenuItem>
-              <MenuItem onClick={() =>{
+              <MenuItem onClick={() => {
                 changeLanguageAndRoute(router, 'de');
-                handleLanguageMenuClose()
-                }}>
+                handleLanguageMenuClose();
+              }}>
                 <Flag code="DE" className={styles.flagIcon} />
                 Deutsch
               </MenuItem>
               <MenuItem onClick={() => {
                 changeLanguageAndRoute(router, 'fr');
-                handleLanguageMenuClose()
-                }}>
+                handleLanguageMenuClose();
+              }}>
                 <Flag code="FR" className={styles.flagIcon} />
                 French
               </MenuItem>
             </Menu>
           </li>
-          <li><Link href="/auth/login"><PersonIcon/></Link></li>
+          <li>
+            {isAuthenticated ? (
+              <a onClick={handleLogout} className={styles.logoutLink}>
+                {t('auth.logout')}
+              </a>
+            ) : (
+              <Link href="/auth/login">
+                <PersonIcon />
+              </Link>
+            )}
+          </li>
         </ul>
       </nav>
     </header>

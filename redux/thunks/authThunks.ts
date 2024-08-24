@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import apiEndpoints from '../../config/apiEndpoints';
 import axios from 'axios';
 
 export const registerUser = createAsyncThunk(
@@ -8,13 +9,13 @@ export const registerUser = createAsyncThunk(
     lastName: string;
     email: string;
     username: string;
-    password: string
+    password: string;
   }, thunkAPI) => {
     try {
-      const response = await axios.post('/api/auth/register', userData);
+      const response = await axios.post(apiEndpoints.auth.register, userData);
       const { token, refreshToken, user } = response.data;
 
-      localStorage.setItem('jwtToken', token);
+      localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
 
       return user;
@@ -26,12 +27,12 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
-  async (loginData: { email: string; password: string }, thunkAPI) => {
+  async (loginData: { username: string; password: string }, thunkAPI) => {
     try {
-      const response = await axios.post('/api/auth/login', loginData);
+      const response = await axios.post(apiEndpoints.auth.login, loginData);
       const { token, refreshToken, user } = response.data;
 
-      localStorage.setItem('jwtToken', token);
+      localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
 
       return user;
