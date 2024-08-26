@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { TextField, Button, Box, Typography, IconButton, InputAdornment, FormControlLabel, Checkbox } from '@mui/material';
+import { TextField, Button, Box, Typography, IconButton, InputAdornment, FormControlLabel, Checkbox, Snackbar, Alert } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import ClearIcon from '@mui/icons-material/Clear';
 import AuthLayout from '../../../components/Layout/AuthLayout';
@@ -18,11 +18,13 @@ const Login: React.FC = () => {
   const theme = useTheme();
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector((state: RootState) => state.auth.loading);
+  const error = useAppSelector((state: RootState) => state.auth.error);
   const router = useRouter();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleClearUsername = () => setUsername('');
   const handleClearPassword = () => setPassword('');
@@ -33,9 +35,17 @@ const Login: React.FC = () => {
         username,
         password,
       })
-    ).then(() => {
-      router.push('/tours');
+    ).then((action) => {
+      if (loginUser.fulfilled.match(action)) {
+        router.push('/tours');
+      } else {
+        setOpenSnackbar(true);
+      }
     });
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
   };
 
   return (
@@ -174,7 +184,7 @@ const Login: React.FC = () => {
           onClick={handleLogin}
           disabled={isLoading}
         >
-          {isLoading ? t('auth.wait') : t('auth.login')}
+          {isLoading ? t('auth.processing') : t('auth.login')}
         </Button>
         <Typography className={styles.linkText}>
           {t('auth.noAccount')}{' '}
@@ -183,6 +193,27 @@ const Login: React.FC = () => {
           </Link>
         </Typography>
       </Box>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        sx={{ 
+          top: { xs: -10, sm: -150 },
+        }}
+      >
+        <Alert 
+          onClose={handleCloseSnackbar} 
+          severity="error" 
+          sx={{ 
+            fontSize: '12px',
+            fontWeight: 'bold',
+            color: '#f7b731'
+          }}
+        >
+          {error || t('auth.loginFailed')}
+        </Alert>
+      </Snackbar>
     </AuthLayout>
   );
 };

@@ -49,7 +49,9 @@
     "passwordRequired": "Veuillez entrer votre mot de passe",
     "passwordTooShort": "Le mot de passe doit contenir au minimum 8 caractères",
     "sending": "Envoi",
-    "logout": "Déconnexion"
+    "logout": "Déconnexion",
+    "loginRequired": "Les détails de la visite sont disponibles uniquement pour les utilisateurs enregistrés",
+    "processing": "Traitement"
   },
   "tours": {
     "sortByDuration": "Trier par durée",

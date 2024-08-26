@@ -10,6 +10,8 @@ import NoHeaderFooterLayout from '../components/Layout/NoHeaderFooterLayout';
 import { lightTheme, darkTheme } from '../styles/theme';
 import Loader from '../components/Loader/Loader';
 import store from '../redux/store';
+import { useAppDispatch } from '../redux/hooks';
+import { verifyTokenAndRefresh } from '../utils/authUtils';
 import 'leaflet/dist/leaflet.css';
 import '../styles/globals.scss';
 import '../styles/theme.scss';
@@ -60,25 +62,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   const getLayout = (Component as any).getLayout || ((page: React.ReactNode) => <MainLayout handleThemeChange={handleThemeChange}>{page}</MainLayout>);
 
-  if ((Component as any).useNoHeaderFooterLayout) {
-    return (
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Provider store={store}>
-          <Head>
-            <title>BikeToursNewYork</title>
-            <meta name="description" content="Discover the best bike tours in New York!" />
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-          {loading && <Loader />}
-          <NoHeaderFooterLayout>
-            <Component {...pageProps} handleThemeChange={handleThemeChange} />
-          </NoHeaderFooterLayout>
-        </Provider>
-      </ThemeProvider>
-    );
-  }
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -88,11 +71,23 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <meta name="description" content="Discover the best bike tours in New York!" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        {loading && <Loader />}
-        {getLayout(<Component {...pageProps} handleThemeChange={handleThemeChange} />)}
+        <StartupActions>
+          {loading && <Loader />}
+          {getLayout(<Component {...pageProps} handleThemeChange={handleThemeChange} />)}
+        </StartupActions>
       </Provider>
     </ThemeProvider>
   );
+};
+
+const StartupActions = ({ children }: { children: React.ReactNode }) => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    verifyTokenAndRefresh(dispatch);
+  }, [dispatch]);
+
+  return <>{children}</>;
 };
 
 export default appWithTranslation(MyApp);

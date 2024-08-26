@@ -60,3 +60,34 @@ export const login = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
+export const refreshToken = async (req: Request, res: Response) => {
+  const { refreshToken } = req.body;
+
+  if (!refreshToken) {
+    return res.status(403).json({ message: 'Refresh token not provided' });
+  }
+
+  try {
+    const decoded: any = jwt.verify(refreshToken, refreshSecret);
+    const userId = decoded.id;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(401).json({ message: 'User not found' });
+    }
+
+    const newToken = createToken(userId, '1h');
+    const newRefreshToken = createRefreshToken(userId);
+
+    const userData = {
+      id: user._id,
+      username: user.username,
+      role: user.role,
+    };
+
+    res.status(200).json({ token: newToken, refreshToken: newRefreshToken, user: userData });
+  } catch (error) {
+    res.status(403).json({ message: 'Invalid refresh token' });
+  }
+};

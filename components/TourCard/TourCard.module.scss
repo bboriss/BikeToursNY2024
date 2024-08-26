@@ -39,6 +39,24 @@
       color: var(--header-text-light);
     }
   }
+
+  .disabled {
+    margin-top: 7px;
+    padding: 4px 12px;
+    margin-bottom: 8px;
+    background-color: var(--dark-gray);
+    color: var(--form-text);
+    @include font-primary-regular-xs;
+    text-transform: none;
+  
+    &:hover {
+      color: var(--header-background-light);
+    }
+  }
+}
+
+.popup {
+  @include font-primary-regular-xs; 
 }
 
 @media (min-width: $sx) {

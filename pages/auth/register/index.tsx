@@ -400,7 +400,7 @@ const Register: React.FC = () => {
           onClick={handleRegister}
           disabled={isLoading}
         >
-          {isLoading ? t('auth.wait') : t('auth.register')}
+          {isLoading ? t('auth.processing') : t('auth.register')}
         </Button>
         
         <Typography className={styles.linkText}>

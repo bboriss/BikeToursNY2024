@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loginUser, registerUser } from '../thunks/authThunks';
 
-interface AuthState {
+export interface AuthState {
   isAuthenticated: boolean;
   user: {
     id: string | null;
@@ -34,12 +34,16 @@ const authSlice = createSlice({
         username: null,
         role: null,
       };
-      localStorage.removeItem('jwtToken');
+      localStorage.removeItem('token');
       localStorage.removeItem('refreshToken');
+      document.cookie = 'jwtToken=; Max-Age=0; path=/';
+    },
+    updateUser: (state, action: PayloadAction<{ id: string; username: string; role: 'admin' | 'user' }>) => {
+      state.isAuthenticated = true;
+      state.user = action.payload;
     },
   },
   extraReducers: (builder) => {
-    // Login
     builder
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
@@ -53,10 +57,7 @@ const authSlice = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
-      });
-
-    // Registration
-    builder
+      })
       .addCase(registerUser.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -73,5 +74,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, updateUser } = authSlice.actions;
 export default authSlice.reducer;

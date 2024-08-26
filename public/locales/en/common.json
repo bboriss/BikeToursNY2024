@@ -49,7 +49,9 @@
     "passwordRequired": "Please enter your password",
     "passwordTooShort":"Password must contain minimum 8 characters",
     "sending": "Sending",
-    "logout": "Logout"
+    "logout": "Logout",
+    "loginRequired": "Tour details only available for registered users",
+    "processing": "Processing"
   },
   "tours": {
     "searchByStreet": "Search by starting street",

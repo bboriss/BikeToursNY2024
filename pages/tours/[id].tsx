@@ -8,6 +8,7 @@ import ToursLayout from '../../components/Layout/ToursLayout';
 import { ParsedUrlQuery } from "querystring";
 import styles from '../tours/Tours.module.scss';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import cookie from 'cookie';
 import { intervalToDuration, formatDuration } from 'date-fns';
 
 interface Params extends ParsedUrlQuery {
@@ -85,8 +86,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params as Params;
   const { locale } = context;
 
+  const cookies = cookie.parse(context.req.headers.cookie || '');
+  const token = cookies.token;
+
   try {
-    const response = await axios.get(`${apiEndpoints.getTourById(id)}`);
+    const response = await axios.get(`${apiEndpoints.getTourById(id)}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     return {
       props: {

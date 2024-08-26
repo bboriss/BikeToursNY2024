@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Popover, Typography } from '@mui/material';
 import { useTranslation } from 'next-i18next';
+import { useAppSelector } from '../../redux/hooks';
 import styles from './TourCard.module.scss';
 
 const MapContainer = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), { ssr: false });
@@ -21,17 +22,34 @@ const TourCard: React.FC<TourCardProps> = ({ id, startLocation, endLocation, sta
   const [isClient, setIsClient] = useState(false);
   const { t } = useTranslation('common');
   const router = useRouter();
+  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
+
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   const handleExploreClick = () => {
-    router.push(`/tours/${id}`);
+    if (isAuthenticated) {
+      router.push(`/tours/${id}`);
+    }
   };
 
+  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
+    if (!isAuthenticated) {
+      setAnchorEl(event.currentTarget);
+    }
+  };
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+
   if (!isClient) {
-    return null; 
+    return null;
   }
 
   return (
@@ -48,9 +66,35 @@ const TourCard: React.FC<TourCardProps> = ({ id, startLocation, endLocation, sta
       <p className={styles.description}><b>{t('tours.from')}</b>: {startStationName}</p>
       <p className={styles.description}><b>{t('tours.to')}</b>: {endStationName}</p>
       <Box className={styles.buttonContainer}>
-        <Button variant="contained" className={styles.exploreButton} onClick={handleExploreClick}>
+        <Button
+          variant="contained"
+          className={isAuthenticated ? styles.exploreButton : styles.disabled}
+          onClick={handleExploreClick}
+          onMouseEnter={handlePopoverOpen}
+          onMouseLeave={handlePopoverClose}
+        >
           {t('tours.explore')}
         </Button>
+        <Popover
+          id="mouse-over-popover"
+          sx={{
+            pointerEvents: 'none'
+          }}
+          open={open}
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          onClose={handlePopoverClose}
+          disableRestoreFocus
+        >
+          <Typography sx={{ p: 2 }}>{t('auth.loginRequired')}</Typography>
+        </Popover>
       </Box>
     </Box>
   );

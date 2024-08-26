@@ -8,6 +8,8 @@ import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { changeLanguageAndRoute } from '../../utils/languageUtils';
 import { toggleTheme } from '../../utils/themeUtils';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+import { logout } from '../../redux/slices/authSlice';
 import styles from './HeaderMobile.module.scss';
 
 interface HeaderMobileProps {
@@ -21,6 +23,8 @@ const HeaderMobile: React.FC<HeaderMobileProps> = ({ handleThemeChange }) => {
   const theme = useTheme();
   const darkMode = theme.palette.mode === 'dark';
   const router = useRouter();
+  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useAppDispatch();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -34,6 +38,12 @@ const HeaderMobile: React.FC<HeaderMobileProps> = ({ handleThemeChange }) => {
 
   const handleThemeToggle = () => {
     toggleTheme(darkMode, handleThemeChange);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    router.push('/');
+    toggleMenu();
   };
 
   return (
@@ -80,8 +90,17 @@ const HeaderMobile: React.FC<HeaderMobileProps> = ({ handleThemeChange }) => {
               <Link href="/about" onClick={toggleMenu}>{t('about')}</Link>
             </li>
             <li>
-              <PersonIcon className={styles.icon} />
-              <Link href="/auth/login" onClick={toggleMenu}>{t('auth.login')}</Link>
+              {isAuthenticated ? (
+                <>
+                <PersonIcon className={styles.icon} />
+                <Link href="/" onClick={handleLogout}>{t('auth.logout')}</Link>
+              </>
+              ) : (
+                <>
+                  <PersonIcon className={styles.icon} />
+                  <Link href="/auth/login" onClick={toggleMenu}>{t('auth.login')}</Link>
+                </>
+              )}
             </li>
           </ul>
         </div>

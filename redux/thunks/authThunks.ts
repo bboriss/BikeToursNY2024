@@ -17,10 +17,12 @@ export const registerUser = createAsyncThunk(
 
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
+      document.cookie = `token=${token}; path=/`;
 
       return user;
-    } catch (error) {
-      return thunkAPI.rejectWithValue('Registration failed');
+    } catch (error: any) {
+      const errorMessage = error.response?.data?.message || 'Registration failed';
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );
@@ -34,10 +36,12 @@ export const loginUser = createAsyncThunk(
 
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
+      document.cookie = `token=${token}; path=/`;
 
       return user;
-    } catch (error) {
-      return thunkAPI.rejectWithValue('Login failed');
+    } catch (error: any) {
+      const errorMessage = error.response?.data?.message || 'Login failed';
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );

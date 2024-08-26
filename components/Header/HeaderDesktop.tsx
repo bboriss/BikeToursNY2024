@@ -39,7 +39,7 @@ const HeaderDesktop: React.FC<HeaderDesktopProps> = ({ handleThemeChange }) => {
 
   const handleLogout = () => {
     dispatch(logout());
-    router.push('/');
+    router.push('/auth/login');
   };
 
   return (
