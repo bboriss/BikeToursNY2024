@@ -93,7 +93,7 @@ const TourCard: React.FC<TourCardProps> = ({ id, startLocation, endLocation, sta
           onClose={handlePopoverClose}
           disableRestoreFocus
         >
-          <Typography sx={{ p: 2 }}>{t('auth.loginRequired')}</Typography>
+          <p className={styles.popup}>{t('auth.loginRequired')}</p>
         </Popover>
       </Box>
     </Box>

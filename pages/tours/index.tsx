@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Pagination, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Pagination, Snackbar, Alert, useMediaQuery, useTheme } from '@mui/material';
 import { GetServerSideProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 import ToursLayout from '../../components/Layout/ToursLayout';
 import TourFilters from '../../components/ToursFilters/ToursFilters';
 import ToursContainer from '../../components/ToursContainer/ToursContainer';
@@ -20,6 +21,7 @@ interface Tour {
 
 const Tours: React.FC = () => {
   const { t } = useTranslation('common');
+  const router = useRouter();
   const [tours, setTours] = useState<Tour[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchValue, setSearchValue] = useState('');
@@ -32,6 +34,8 @@ const Tours: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [debouncedSearchValue, setDebouncedSearchValue] = useState(searchValue);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [welcomeMessage, setWelcomeMessage] = useState('');
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -66,6 +70,21 @@ const Tours: React.FC = () => {
 
     fetchTours();
   }, [debouncedSearchValue, sortValue, page]);
+
+  useEffect(() => {
+    if (router.query.welcome === 'true') {
+      if (router.query.firstName && router.query.lastName) {
+        setWelcomeMessage(t('welcomeUserFull', { firstName: router.query.firstName, lastName: router.query.lastName }));
+      } else if (router.query.username) {
+        setWelcomeMessage(t('welcomeUserBack', { username: router.query.username }));
+      }
+      setSnackbarOpen(true);
+    }
+  }, [router.query, t]);
+
+  const handleCloseSnackbar = () => {
+    setSnackbarOpen(false);
+  };
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
@@ -118,6 +137,26 @@ const Tours: React.FC = () => {
             }
           }}
         />}
+
+        <Snackbar
+          open={snackbarOpen}
+          autoHideDuration={3000}
+          onClose={handleCloseSnackbar}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
+          <Alert
+            onClose={handleCloseSnackbar}
+            severity="success"
+            sx={{
+              width: '320px',
+              fontSize: '12px',
+              backgroundColor: '#f7b731',
+              color: '#272829',
+            }}
+          >
+            {welcomeMessage}
+          </Alert>
+        </Snackbar>
       </Box>
     </ToursLayout>
   );

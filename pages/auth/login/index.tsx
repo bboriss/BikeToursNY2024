@@ -37,12 +37,16 @@ const Login: React.FC = () => {
       })
     ).then((action) => {
       if (loginUser.fulfilled.match(action)) {
-        router.push('/tours');
+        const { username } = action.payload;
+        router.push({
+          pathname: '/tours',
+          query: { welcome: 'true', username },
+        });
       } else {
         setOpenSnackbar(true);
       }
     });
-  };
+  };  
 
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
@@ -51,7 +55,7 @@ const Login: React.FC = () => {
   return (
     <AuthLayout>
       <Box className={styles.formWrapper}>
-        <Typography variant="h4" className={styles.formTitle}>{t('auth.login')}</Typography>
+        <h4 className={styles.formTitle}>{t('auth.login')}</h4>
         <TextField
           label={t('auth.username')}
           variant="outlined"
@@ -186,12 +190,12 @@ const Login: React.FC = () => {
         >
           {isLoading ? t('auth.processing') : t('auth.login')}
         </Button>
-        <Typography className={styles.linkText}>
+        <p className={styles.linkText}>
           {t('auth.noAccount')}{' '}
           <Link href="/auth/register" passHref legacyBehavior>
             <a className={styles.link}>{t('auth.register')}</a>
           </Link>
-        </Typography>
+        </p>
       </Box>
       <Snackbar
         open={openSnackbar}

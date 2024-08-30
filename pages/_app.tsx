@@ -17,7 +17,7 @@ import '../styles/globals.scss';
 import '../styles/theme.scss';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const [mode, setMode] = useState<'light' | 'dark'>('dark');
+  const [mode, setMode] = useState<'light' | 'dark' | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -27,9 +27,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('theme', mode);
-    document.body.classList.remove(mode === 'light' ? 'dark-theme' : 'light-theme');
-    document.body.classList.add(mode + '-theme');
+    if (mode) {
+      localStorage.setItem('theme', mode);
+      document.body.classList.remove(mode === 'light' ? 'dark-theme' : 'light-theme');
+      document.body.classList.add(mode + '-theme');
+    }
   }, [mode]);
 
   useEffect(() => {
@@ -59,6 +61,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   };
 
   const theme = createTheme(mode === 'light' ? lightTheme : darkTheme);
+
+  if (mode === null) {
+    return <Loader />; // Or any fallback content until the theme is loaded
+  }
 
   const getLayout = (Component as any).getLayout || ((page: React.ReactNode) => <MainLayout handleThemeChange={handleThemeChange}>{page}</MainLayout>);
 

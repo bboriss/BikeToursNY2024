@@ -56,7 +56,8 @@
 }
 
 .popup {
-  @include font-primary-regular-xs; 
+  @include font-primary-regular-xs;
+  padding: 8px;
 }
 
 @media (min-width: $sx) {

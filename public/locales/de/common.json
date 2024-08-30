@@ -9,6 +9,8 @@
   "submit": "Absenden",
   "wait": "Bitte warten",
   "findYourTour": "Finden Sie Ihre Tour",
+  "welcomeUserFull": "Willkommen {{firstName}} {{lastName}}. Viel Glück bei deiner nächsten Fahrt!",
+  "welcomeUserBack": "Willkommen zurück, {{username}}. Viel Glück bei deiner nächsten Fahrt!",
   "aboutPage": {
     "about": "Über uns",
     "description": "Bei Bike Tours New York ist es unsere Mission, Radfahrern unvergessliche und bereichernde Erlebnisse durch sorgfältig kuratierte Radtouren zu bieten. Wir wollen die vielfältigen Stadtviertel, historischen Wahrzeichen und versteckten Juwelen der Stadt hervorheben, und dabei stets für eine sichere und angenehme Fahrt sorgen.",
@@ -33,7 +35,7 @@
     "register": "Register",
     "username": "Username",
     "password": "Password",
-    "noAccount": "No Account?",
+    "noAccount": "Kein Konto?",
     "title": "Beginnen Sie Ihr Stadtabenteuer hier",
     "subtitle": "Registrieren Sie sich, um zusätzliche Funktionen zum Erkunden der besten Fahrradtouren für das ultimative Stadterlebnis freizuschalten",
     "showPassword": "Passwort anzeigen",

@@ -29,9 +29,9 @@ const ToursContainer: React.FC<ToursContainerProps> = ({ tours, loading, searchV
   if (tours.length === 0) {
     return (
       <Box>
-        <Typography variant="h1" className={styles.noResultsText}>
+        <h1 className={styles.noResultsText}>
           {t('tours.noResults', { searchValue })}
-        </Typography>
+        </h1>
       </Box>
     );
   }

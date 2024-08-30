@@ -1,11 +1,11 @@
-import ClearIcon from '@mui/icons-material/Clear';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { TextField, Button, Box, Typography, IconButton, InputAdornment, FormControlLabel, Checkbox } from '@mui/material';
+import { TextField, Button, Box, Typography, IconButton, InputAdornment, FormControlLabel, Checkbox, Snackbar, Alert } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import ClearIcon from '@mui/icons-material/Clear';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { RootState } from '../../../redux/store';
 import { registerUser } from '../../../redux/thunks/authThunks';
@@ -18,6 +18,7 @@ const Register: React.FC = () => {
   const theme = useTheme();
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector((state: RootState) => state.auth.loading);
+  const error = useAppSelector((state: RootState) => state.auth.error);
   const router = useRouter();
   
   const [username, setUsername] = useState('');
@@ -27,6 +28,7 @@ const Register: React.FC = () => {
   const [email, setEmail] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleClearUsername = () => setUsername('');
   const handleClearPassword = () => setPassword('');
@@ -60,10 +62,21 @@ const Register: React.FC = () => {
           username,
           password,
         })
-      ).then(() => {
-        router.push('/tours');
+      ).then((action) => {
+        if (registerUser.fulfilled.match(action)) {
+          router.push({
+            pathname: '/tours',
+            query: { welcome: 'true', firstName, lastName },
+          });
+        } else {
+          setOpenSnackbar(true);
+        }
       });
     }
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -95,7 +108,7 @@ const Register: React.FC = () => {
   return (
     <AuthLayout>
       <Box className={styles.formWrapper}>
-        <Typography variant="h4" className={styles.formTitle}>{t('auth.register')}</Typography>
+        <h4 className={styles.formTitle}>{t('auth.register')}</h4>
 
         <TextField
           label={t('auth.firstName')}
@@ -403,13 +416,35 @@ const Register: React.FC = () => {
           {isLoading ? t('auth.processing') : t('auth.register')}
         </Button>
         
-        <Typography className={styles.linkText}>
+        <h4 className={styles.linkText}>
           {t('auth.haveAccount')}?{' '}
           <Link href="/auth/login" passHref legacyBehavior>
             <a className={styles.link}>{t('auth.login')}</a>
           </Link>
-        </Typography>
+        </h4>
       </Box>
+
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        sx={{ 
+          top: { xs: -10, sm: -150 },
+        }}
+      >
+        <Alert 
+          onClose={handleCloseSnackbar} 
+          severity="error" 
+          sx={{ 
+            fontSize: '12px',
+            fontWeight: 'bold',
+            color: '#f7b731'
+          }}
+        >
+          {error || t('auth.registrationFailed')}
+        </Alert>
+      </Snackbar>
     </AuthLayout>
   );
 };
