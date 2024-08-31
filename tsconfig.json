@@ -31,7 +31,7 @@
     ".next/types/**/*.ts",
     "src",
     "types"
-  ],
+, "api/server.mjs"  ],
   "exclude": [
     "node_modules"
   ]

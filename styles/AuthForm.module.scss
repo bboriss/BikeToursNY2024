@@ -1,6 +1,6 @@
-@import './variables';
-@import './typography';
-@import './theme.scss';
+@import '../styles/typography';
+@import '../styles/variables';
+@import '../styles/theme.scss';
 
 .formWrapper {
   display: flex;

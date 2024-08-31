@@ -6,7 +6,6 @@ import { appWithTranslation } from 'next-i18next';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
 import MainLayout from '../components/Layout/MainLayout';
-import NoHeaderFooterLayout from '../components/Layout/NoHeaderFooterLayout';
 import { lightTheme, darkTheme } from '../styles/theme';
 import Loader from '../components/Loader/Loader';
 import store from '../redux/store';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import styles from '../Layout/ToursLayout.Module.scss';
+import styles from '../Layout/ToursLayout.module.scss';
 
 interface ToursLayoutProps {
   children: React.ReactNode;
