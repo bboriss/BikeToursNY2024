@@ -3,7 +3,7 @@ import { TextField, IconButton, InputAdornment, Box, Select, MenuItem, FormContr
 import { useTheme } from '@mui/material/styles';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useTranslation } from 'next-i18next';
-import styles from './ToursFilters.module.scss';
+import styles from '../ToursFilters/ToursFilters.Module.scss';
 
 interface TourFiltersProps {
   searchValue: string;
