@@ -1,0 +1,14 @@
+@import './variables';
+@import './typography';
+
+.toursContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-image: url('/assets/newyork2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

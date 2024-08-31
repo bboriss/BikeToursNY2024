@@ -1,0 +1,68 @@
+@import './variables';
+@import './typography';
+@import './theme.scss';
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1px);
+  @include font-primary-regular-xs;
+}
+
+.formTitle {
+  margin: 15px;
+  @include font-primary-bold-base-lg;
+  color: var(--text-color);
+}
+
+.textField {
+  margin-bottom: 8px;
+}
+
+.showPassword {
+  align-self: baseline;
+}
+
+.submitButton {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: var(--dark-gray);
+  color: var(--form-text);
+  width: 120px;
+  @include font-primary-regular-xs;
+  transition: transform 0.2s, color 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: var(--header-background);
+    color: var(--header-text-light);
+  }
+}
+
+.linkText {
+  margin-top: 15px;
+  color: var(--form-text);
+  @include font-primary-light-xs;
+}
+
+.link {
+  color: var(--text-color);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media (min-width: $sx) {
+  .formWrapper {
+    border-radius: 0 10px 10px 0;
+  }
+}

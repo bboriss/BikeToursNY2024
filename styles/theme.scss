@@ -1,0 +1,38 @@
+// Dark mode
+.dark-theme {
+  --header-background: #272829;
+  --header-background-light: #3A4750;
+  --header-text: #f7b731;
+  --header-text-light: #FFDD93;
+  --main-content-text: #f7b731;
+  --about-background: #272829;
+  --icon-color: #f7b731;
+  --text-color: #EEEEEE;
+  --drawer-text: #e0e0e0;
+  --form-text: #f7b731;
+  --footer-background: #272829;
+  --footer-text: #f7b731;
+  --dark-gray: #272829;
+  --tours-title: #272829;
+  --details-text: #FFFBE6;
+}
+
+// Light mode
+.light-theme {
+  --header-background: #f7b731;
+  --header-background-light: #FFDD93;
+  --header-text: #272829;
+  --header-text-light: #3a4750;
+  --about-background: #FFFFE8;
+  --main-content-text: #EEEEEE;
+  --icon-color: #272829;
+  --text-color: #EEEEEE;
+  --drawer-text: #272829;
+  --form-text: #EEEEEE;
+  --footer-background: #f7b731;
+  --footer-text: #272829;
+  --dark-gray: #272829;
+  --tours-title: #0000;
+  --details-text: #EEEEEE
+}
+  

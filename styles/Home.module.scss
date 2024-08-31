@@ -1,0 +1,55 @@
+@import './typography';
+@import './variables';
+
+.backgroundVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.content {
+    text-align: center;
+    color: var(--text-color);
+    padding: 0 20px;
+    transform: translateY(-60px);
+    @include font-primary-regular-xxs;
+
+    h1 {
+        margin-bottom: 10px;
+        color: var(--main-content-text);
+    }
+
+    button {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: $sx) {
+    .content {
+        max-width: 600px;
+        padding: 30px;
+        transform: translateY(-60px);
+    }
+
+    .content h1 {
+        @include font-primary-mid-heavy;
+    }
+}
+
+
+@media (min-width: $sm) {
+    .content {
+        max-width: 700px;
+        padding: 40px;
+        transform: translateY(-30px);
+    }
+
+    .content h1 {
+        @include font-primary-ultra-heavy;
+        margin-bottom: 20px;
+    }
+}

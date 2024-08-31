@@ -1,0 +1,83 @@
+@import './typography';
+@import './variables';
+
+.tourCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(1px);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.description {
+  @include font-primary-light-xs;
+  color: var(--text-color);
+  margin-left: 4px;
+}
+
+.buttonContainer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+
+  .exploreButton {
+    margin-top: 7px;
+    padding: 4px 12px;
+    margin-bottom: 8px;
+    background-color: var(--dark-gray);
+    color: var(--form-text);
+    @include font-primary-regular-xs;
+    text-transform: none;
+  
+    &:hover {
+      background-color: var(--header-background);
+      color: var(--header-text-light);
+    }
+  }
+
+  .disabled {
+    margin-top: 7px;
+    padding: 4px 12px;
+    margin-bottom: 8px;
+    background-color: var(--dark-gray);
+    color: var(--form-text);
+    @include font-primary-regular-xs;
+    text-transform: none;
+  
+    &:hover {
+      color: var(--header-background-light);
+    }
+  }
+}
+
+.popup {
+  @include font-primary-regular-xs;
+  padding: 8px;
+}
+
+@media (min-width: $sx) {
+  .tourCard {
+    height: 300px;
+    max-width: 550px;
+  }
+}
+
+@media (min-width: $sm) {
+  .tourCard {
+    height: 300px;
+    max-width: 550px;
+  }
+}
+
+@media (min-width: $md) {
+  .tourCard {
+    height: 400px;
+    width: 250px;
+    align-items: flex-start;
+  }
+}

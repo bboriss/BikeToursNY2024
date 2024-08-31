@@ -1,0 +1,37 @@
+@import './_variables.scss';
+@import './_typography.scss';
+
+.container {
+  padding: 10px 20px;
+  background-color: var(--about-background);
+  color: var(--drawer-text);
+  flex: 1
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.title {
+  @include font-primary-bold-xl;
+  margin-bottom: 10px
+}
+
+.subtitle {
+  @include font-primary-semi-md;
+  margin-bottom: 6px;
+}
+
+.text {
+  @include font-primary-regular;
+  line-height: 1.6;
+}
+
+.list {
+  list-style-type: none;
+  @include font-primary-regular;
+  
+  li {
+    margin-bottom: 10px;
+  }
+}

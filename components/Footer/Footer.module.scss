@@ -1,0 +1,13 @@
+@import './../../styles/typography';
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: var(--footer-background);
+    color: var(--footer-text);
+    text-align: center;
+    @include font-primary-light-xs;
+}
+  
