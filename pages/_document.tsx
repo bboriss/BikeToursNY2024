@@ -11,12 +11,7 @@ class MyDocument extends Document<Props> {
       <Html>
         <Head>
           <meta charSet="utf-8" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-            rel="stylesheet"
-          />
            <link rel="icon" href="/assets/iconbike.ico" />
-
         </Head>
         <body>
           <Main />

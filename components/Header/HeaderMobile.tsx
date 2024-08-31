@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Drawer, IconButton, Menu, MenuItem } from '@mui/material';
-import { Menu as MenuIcon, LightMode, DarkMode, Close as CloseIcon, Home as HomeIcon, Info as InfoIcon, Person as PersonIcon } from '@mui/icons-material';
+import MenuIcon from '@mui/icons-material/Menu';
+import LightMode from '@mui/icons-material/LightMode';
+import DarkMode from '@mui/icons-material/DarkMode';
+import CloseIcon from '@mui/icons-material/Close';
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import PersonIcon from '@mui/icons-material/Person';
 import { useTheme } from '@mui/material/styles';
 import PublicIcon from '@mui/icons-material/Public';
 import { useTranslation } from 'next-i18next';
