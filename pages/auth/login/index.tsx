@@ -25,28 +25,59 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const handleClearUsername = () => setUsername('');
   const handleClearPassword = () => setPassword('');
 
+  const validateForm = () => {
+    const tempErrors: { [key: string]: string } = {};
+
+    if (!username) tempErrors.username = t('auth.usernameRequired');
+    if (!password) tempErrors.password = t('auth.passwordRequired');
+
+    setErrors(tempErrors);
+
+    return Object.keys(tempErrors).length === 0;
+  };
+
   const handleLogin = () => {
-    dispatch(
-      loginUser({
-        username,
-        password,
-      })
-    ).then((action) => {
-      if (loginUser.fulfilled.match(action)) {
-        const { username } = action.payload;
-        router.push({
-          pathname: '/tours',
-          query: { welcome: 'true', username },
-        });
-      } else {
-        setOpenSnackbar(true);
-      }
-    });
-  };  
+    if (validateForm()) {
+      dispatch(
+        loginUser({
+          username,
+          password,
+        })
+      ).then((action) => {
+        if (loginUser.fulfilled.match(action)) {
+          const { username } = action.payload;
+          router.push({
+            pathname: '/tours',
+            query: { welcome: 'true', username },
+          });
+        } else {
+          setOpenSnackbar(true);
+        }
+      });
+    }
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    if (errors[field]) {
+      setErrors((prevErrors) => ({ ...prevErrors, [field]: '' }));
+    }
+
+    switch (field) {
+      case 'username':
+        setUsername(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+      default:
+        break;
+    }
+  };
 
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
@@ -55,7 +86,7 @@ const Login: React.FC = () => {
   return (
     <AuthLayout>
       <Box className={styles.formWrapper}>
-        <h4 className={styles.formTitle}>{t('auth.login')}</h4>
+        <Typography variant="h4" className={styles.formTitle}>{t('auth.login')}</Typography>
         <TextField
           label={t('auth.username')}
           variant="outlined"
@@ -63,7 +94,9 @@ const Login: React.FC = () => {
           margin="normal"
           className={styles.textField}
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => handleInputChange('username', e.target.value)}
+          error={!!errors.username}
+          helperText={errors.username}
           InputLabelProps={{
             sx: {
               '&.Mui-focused': {
@@ -76,7 +109,7 @@ const Login: React.FC = () => {
             endAdornment: (
               username && (
                 <InputAdornment position="end">
-                  <IconButton 
+                  <IconButton
                     onClick={handleClearUsername}
                     sx={{
                       color: theme.palette.primary.main,
@@ -84,7 +117,7 @@ const Login: React.FC = () => {
                         color: 'white'
                       },
                     }}
-                    >
+                  >
                     <ClearIcon />
                   </IconButton>
                 </InputAdornment>
@@ -116,7 +149,9 @@ const Login: React.FC = () => {
           margin="normal"
           className={styles.textField}
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => handleInputChange('password', e.target.value)}
+          error={!!errors.password}
+          helperText={errors.password}
           InputLabelProps={{
             sx: {
               '&.Mui-focused': {
@@ -129,7 +164,7 @@ const Login: React.FC = () => {
             endAdornment: (
               password && (
                 <InputAdornment position="end">
-                  <IconButton 
+                  <IconButton
                     onClick={handleClearPassword}
                     sx={{
                       color: theme.palette.primary.main,
@@ -190,26 +225,26 @@ const Login: React.FC = () => {
         >
           {isLoading ? t('auth.processing') : t('auth.login')}
         </Button>
-        <p className={styles.linkText}>
+        <Typography className={styles.linkText}>
           {t('auth.noAccount')}{' '}
           <Link href="/auth/register" passHref legacyBehavior>
             <a className={styles.link}>{t('auth.register')}</a>
           </Link>
-        </p>
+        </Typography>
       </Box>
       <Snackbar
         open={openSnackbar}
         autoHideDuration={6000}
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        sx={{ 
+        sx={{
           top: { xs: -10, sm: -150 },
         }}
       >
-        <Alert 
-          onClose={handleCloseSnackbar} 
-          severity="error" 
-          sx={{ 
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity="error"
+          sx={{
             fontSize: '12px',
             fontWeight: 'bold',
             color: '#f7b731'
