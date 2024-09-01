@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import styles from './ToursLayoutr.module.scss';
-
+// added r letter for strange build fix
 interface ToursLayoutProps {
   children: React.ReactNode;
 }
