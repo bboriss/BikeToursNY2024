@@ -1,4 +1,3 @@
-// api/types/express.d.ts
 import { User as UserType } from '../models/User';
 
 declare global {
