@@ -35,7 +35,7 @@
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.2",
     "morgan": "^1.10.0",
-    "next": "14.2.4",
+    "next": "^14.2.7",
     "next-auth": "^4.24.7",
     "next-i18next": "^15.3.0",
     "next-videos": "^1.4.1",
@@ -46,7 +46,8 @@
     "react-redux": "^9.1.2",
     "react-world-flags": "^1.6.0",
     "sass": "^1.77.8",
-    "validator": "^13.12.0"
+    "validator": "^13.12.0",
+    "webpack": "^5.94.0"
   },
   "devDependencies": {
     "@babel/core": "^7.24.9",
@@ -68,8 +69,11 @@
     "@types/react-world-flags": "^1.4.5",
     "@types/validator": "^13.12.0",
     "cross-env": "^7.0.3",
+    "css-loader": "^7.1.2",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.4",
+    "file-loader": "^6.2.0",
+    "sass-loader": "^16.0.1",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5"
