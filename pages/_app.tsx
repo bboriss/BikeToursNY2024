@@ -16,12 +16,12 @@ import '../styles/globals.scss';
 import '../styles/theme.scss';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const [mode, setMode] = useState<'light' | 'dark' | null>(null);
+  const [mode, setMode] = useState<'light' | 'dark'>('dark');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    const savedMode = localStorage.getItem('theme') as 'light' | 'dark' || 'light';
+    const savedMode = localStorage.getItem('theme') as 'light' | 'dark' || 'dark';
     setMode(savedMode);
   }, []);
 
